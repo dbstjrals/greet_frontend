@@ -15,25 +15,30 @@ export default function EmailLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // 이메일 입력 처리 함수
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
+  // 비밀번호 입력 처리 함수
   const handlePasswordChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setPassword(event.target.value);
   };
 
+  // 비밀번호 마스킹
   const maskPassword = (password: string) => {
     return password.replace(/./g, '●');
   }
 
+  // 로그인 클릭 시
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // handle form submission here
   };
 
+  // 이메일 정규 표현식 검사
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const isFormValid = email !== '' && emailRegex.test(email) && password !== '';
 

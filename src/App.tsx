@@ -5,6 +5,7 @@ import './styles/font.css';
 
 import Login from './pages/Login';
 import EmailLogin from './pages/EmailLogin';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />}></Route>
         <Route path="/email-login" element={<EmailLogin />}></Route>
+        <Route path="/sign-up" element={<SignUp />}></Route>
       </Routes>
     </div>
   );

@@ -79,7 +79,7 @@ export default function Login() {
         |
         <span
           style={{ padding: '0 16px', cursor: 'pointer' }}
-        // onClick={}
+          onClick={() => navigate('/sign-up')}
         >다른 방법으로 회원가입</span>
       </div>
 

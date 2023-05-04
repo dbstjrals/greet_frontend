@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { fontStyles } from '../styles/fontStyle';
 
 interface InputProps {
   type: string;
@@ -7,6 +8,10 @@ interface InputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   marginBottom: string;
+  helpMessage?: string;
+  helpMessageColor?: string;
+  border?: string;
+  readOnly?: boolean;
 }
 
 interface LabelProps {
@@ -58,17 +63,31 @@ const InputField: React.FC<InputFieldProps> = ({
   placeholder,
   label,
   marginBottom,
+  helpMessage,
+  helpMessageColor,
+  border,
+  readOnly,
 }) => (
   <div style={{ marginBottom: marginBottom }}>
     <Label htmlFor={label}>{label}</Label>
     <Input
+      style={{border : border}}
       type={type}
       value={value}
       onChange={onChange}
       placeholder={placeholder}
       id={label}
       autoComplete="off"
+      readOnly={readOnly}
     />
+    {helpMessage ?
+      <div style={{
+        ...fontStyles.caption1Regular, color: `${helpMessageColor}`, marginTop: '4px',
+        height: '30px', lineHeight: '30px'
+      }}>
+        {helpMessage}
+      </div>
+      : <></>}  
   </div>
 );
 

@@ -25,7 +25,7 @@ const BackTextNavigationBar: FC<NavigationProps> = ({
       innerText={innerText}
     >
       <img src={back} alt='뒤로 가기' onClick={() => navigate(-1)}
-        style={{ marginLeft: '8px', flex: '32' }} width='24px'
+        style={{ marginLeft: '8px', flex: '32', cursor: 'pointer' }} width='24px'
       ></img>
       <h1 style={{
         ...fontStyles.heading3Semibold, flex: '326', display: 'flex',

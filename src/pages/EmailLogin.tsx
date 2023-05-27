@@ -54,7 +54,7 @@ export default function EmailLogin() {
     <PageContainer>
       <h1 style={{
         ...fontStyles.heading1Medium, paddingTop: '70px',
-        marginBottom: '53px'
+        marginBottom: '53px', color: `${colors.textActive}`
       }}>
         이메일과 비밀번호를<br />
         입력해주세요.

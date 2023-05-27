@@ -14,44 +14,27 @@ import InputField from "../components/InputField";
 import { useState } from "react";
 import Button from "../components/Button";
 import Roles from '../components/Roles';
+import SettingLevel from '../components/SettingLevel';
 
 // Images import
 import defaultProfileImage from "../images/defaultProfileImage.png"
 import cameraIcon from "../images/cameraIcon.png"
-import SettingLevel from '../components/SettingLevel';
-
-
-const CameraStyle = styled.div`
-  position: absolute;
-  top: 90px;
-  left: 207px;
-  img {
-    max-width: 325px;
-  }
-  label {
-    display: inline-block;
-    font-size: inherit;
-    line-height: normal;
-    vertical-align: middle;
-    cursor: pointer;
-  }
-  input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
-`;
+import genreImagePop from '../images/genreImagePop.png'
+import genreImageDance from '../images/genreImageDance.png'
+import genreImageRock from '../images/genreImageRock.png'
+import genreImageHiphop from '../images/genreImageHiphop.png'
+import genreImageSinger from '../images/genreImageSinger.png'
+import genreImageClassic from '../images/genreImageClassic.png'
+import genreImageRnB from '../images/genreImageRnB.png'
+import genreImageSoul from '../images/genreImageSoul.png'
+import genreImageSoundtrack from '../images/genreImageSoundtrack.png'
+import genreImageMetal from '../images/genreImageMetal.png'
 
 export default function Onboarding() {
   const navigate = useNavigate();
 
   // 현재 페이지 저장 변수
-  const [currentPage, setCurrentPage] = useState<number>(3);
+  const [currentPage, setCurrentPage] = useState<number>(7);
 
   // 1페이지 관련 변수 및 함수
   const [image, setImage] = useState(defaultProfileImage);
@@ -118,8 +101,12 @@ export default function Onboarding() {
     setOtherRole(otherRole);
   }
 
+  // role과 level을 저장하는 array (4페이지에서 사용되지만, 3페이지에서 생성되어야 함)
+  const [roleLevel, setRoleLevel] = useState<{ role: string, level: number }[]>([]);
+
   const checkPage3 = () => {
     let array;
+    let roleLevelArray: { role: string, level: number }[] = [];
     if (selectedRoles.includes('그 외 직군')) {
       array = selectedRoles;
       array.splice(array.indexOf('그 외 직군'), 1);
@@ -128,11 +115,96 @@ export default function Onboarding() {
       array = selectedRoles;
       if (array.includes(otherRole)) array.splice(array.indexOf(otherRole));
     }
+    roleLevelArray = selectedRoles.map(role => ({ role, level: 0 }));
     setSelectedRolesForApi(array);
     setCurrentPage(currentPage + 1);
+    setRoleLevel(roleLevelArray);
   };
 
   // 4페이지 관련 변수 및 함수
+  const handleSettingLevel = (roleLevel: { role: string; level: number; }[], index: number, selectedLevel: number) => {
+    const updatedArray = [...roleLevel];
+    updatedArray[index] = { ...updatedArray[index], level: selectedLevel };
+    setRoleLevel(updatedArray);
+  };
+
+  const isPage4ButtonDisabled = roleLevel.every(item => item.level !== 0);
+  const checkPage4 = () => {
+    setCurrentPage(currentPage + 1);
+  }
+
+  // 5페이지 관련 변수 및 함수
+  const everyGenre = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  const [preferredGenre, setPreferredGenre] = useState<number[]>([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [isSelectedAll, setIsSelectedAll] = useState<boolean>(false);
+
+  const handleSelectedAllGenre = () => {
+    const updatedPreferredGenre = everyGenre;
+    if (isSelectedAll === true) {
+      setPreferredGenre([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+      setIsSelectedAll(false);
+    } else {
+      setPreferredGenre(updatedPreferredGenre);
+      setIsSelectedAll(true);
+    }
+  };
+
+  const handleGenreSelect = (index: number) => {
+    let updatedPreferredGenre = [...preferredGenre];
+    if (updatedPreferredGenre[index] === 0) updatedPreferredGenre[index] = 1;
+    else updatedPreferredGenre[index] = 0;
+    setPreferredGenre(updatedPreferredGenre);
+  }
+
+  const isPage5ButtonDisabled = preferredGenre.every(item => item === 0);
+  const checkPage5 = () => {
+    setCurrentPage(currentPage + 1);
+  }
+
+  // 6페이지 관련 변수 및 함수
+  const [url, setUrl] = useState<string>('');
+
+  const handleUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUrl(event.target.value);
+  }
+
+  const checkPage6 = () => {
+    setCurrentPage(currentPage + 1);
+  }
+
+  // 7페이지 관련 변수 및 함수
+  const [commentary, setCommentary] = useState<string>('');
+
+  const handleCommentaryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCommentary(event.target.value);
+  }
+
+  const checkPage7 = () => {
+    setCurrentPage(currentPage + 1);
+    // navigate()
+  }
+
+  // 8페이지 관련 변수 및 함수
+  const [openChatLink, setOpenChatLink] = useState<string>('');
+  const [contactEmail, setContactEmail] = useState<string>('');
+  const [phoneNumber, setPhoneNumber] = useState<string>('');
+  const [instagramId, setInstagramId] = useState<string>('');
+
+  const handleOpenChatLinkChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setOpenChatLink(event.target.value);
+  }
+  const handleContactEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setContactEmail(event.target.value);
+  }
+  const handlePhoneNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPhoneNumber(event.target.value);
+  }
+  const handleInstagramIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInstagramId(event.target.value);
+  }
+
+  const isPage8ButtonDisabled = openChatLink.length === 0 && contactEmail.length === 0 &&
+    phoneNumber.length === 0 && instagramId.length === 0;
 
   return (
     <>
@@ -271,11 +343,231 @@ export default function Onboarding() {
             }}>
               나중에 변경할 수 있어요.
             </div>
-            {selectedRolesForApi.map((role, index) => (
-              <div style={{marginBottom: '30px'}}>
-              <SettingLevel key={index} labelNum={index+1} label={role} />
+            <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '34px' }}>
+              <div style={{ flexBasis: '539px' }}>
+                {selectedRolesForApi.map((role, index) => (
+                  <div style={{ marginBottom: '30px' }}>
+                    <SettingLevel key={index} labelNum={index + 1} label={role} roleLevel={roleLevel} handleSettingLevel={handleSettingLevel} />
+                  </div>
+                ))}
               </div>
-            ))}
+              <Button
+                disabled={!isPage4ButtonDisabled}
+                onClick={checkPage4}
+              >다음</Button>
+            </div>
+          </>
+        )}
+        {currentPage === 5 && (
+          <>
+            <div style={{
+              ...fontStyles.heading2Medium, color: `${colors.textActive}`, marginTop: '16px'
+            }}>
+              선호하는 음악 장르를 선택해 주세요
+            </div>
+            <div style={{
+              ...fontStyles.subheadingRegular, color: `${colors.textDefault}`, marginTop: '4px',
+              marginBottom: '9px'
+            }}>
+              1개 이상 선택해주세요.
+            </div>
+            <CheckboxWrapper>
+              <CheckboxInput
+                type="checkbox"
+                checked={isSelectedAll}
+                onChange={handleSelectedAllGenre}
+                style={{ display: isSelectedAll ? '' : 'none' }}
+              ></CheckboxInput>
+              <MyCheckBox style={{ display: isSelectedAll ? 'none' : '' }}></MyCheckBox>
+              <CheckboxText>전체선택</CheckboxText>
+            </CheckboxWrapper>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px 18px', justifyContent: 'space-between' }}>
+              <GenreWrapper
+                style={{
+                  backgroundImage: `url(${genreImagePop})`,
+                  border: preferredGenre[0] ? `1px solid ${colors.primary100}` : ''
+                }}
+                onClick={() => handleGenreSelect(0)}
+              >팝</GenreWrapper>
+              <GenreWrapper
+                style={{
+                  backgroundImage: `url(${genreImageDance})`,
+                  border: preferredGenre[1] ? `1px solid ${colors.primary100}` : ''
+                }}
+                onClick={() => handleGenreSelect(1)}
+              >댄스/일레트로닉/하우스</GenreWrapper>
+              <GenreWrapper
+                style={{
+                  backgroundImage: `url(${genreImageRock})`,
+                  border: preferredGenre[2] ? `1px solid ${colors.primary100}` : ''
+                }}
+                onClick={() => handleGenreSelect(2)}
+              >락</GenreWrapper>
+              <GenreWrapper
+                style={{
+                  backgroundImage: `url(${genreImageHiphop})`,
+                  border: preferredGenre[3] ? `1px solid ${colors.primary100}` : ''
+                }}
+                onClick={() => handleGenreSelect(3)}
+              >힙합/랩/트랩</GenreWrapper>
+              <GenreWrapper
+                style={{
+                  backgroundImage: `url(${genreImageSinger})`,
+                  border: preferredGenre[4] ? `1px solid ${colors.primary100}` : ''
+                }}
+                onClick={() => handleGenreSelect(4)}
+              >싱어/송라이터</GenreWrapper>
+              <GenreWrapper
+                style={{
+                  backgroundImage: `url(${genreImageClassic})`,
+                  border: preferredGenre[5] ? `1px solid ${colors.primary100}` : ''
+                }}
+                onClick={() => handleGenreSelect(5)}
+              >클래식/오페라</GenreWrapper>
+              <GenreWrapper
+                style={{
+                  backgroundImage: `url(${genreImageRnB})`,
+                  border: preferredGenre[6] ? `1px solid ${colors.primary100}` : ''
+                }}
+                onClick={() => handleGenreSelect(6)}
+              >R&B</GenreWrapper>
+              <GenreWrapper
+                style={{
+                  backgroundImage: `url(${genreImageSoul})`,
+                  border: preferredGenre[7] ? `1px solid ${colors.primary100}` : ''
+                }}
+                onClick={() => handleGenreSelect(7)}
+              >소울/블루스</GenreWrapper>
+              <GenreWrapper
+                style={{
+                  backgroundImage: `url(${genreImageSoundtrack})`,
+                  border: preferredGenre[8] ? `1px solid ${colors.primary100}` : ''
+                }}
+                onClick={() => handleGenreSelect(8)}
+              >사운드트랙</GenreWrapper>
+              <GenreWrapper
+                style={{
+                  backgroundImage: `url(${genreImageMetal})`,
+                  border: preferredGenre[9] ? `1px solid ${colors.primary100}` : ''
+                }}
+                onClick={() => handleGenreSelect(9)}
+              >메탈</GenreWrapper>
+
+            </div>
+            <div style={{ height: '55px' }}></div>
+            <Button
+              disabled={isPage5ButtonDisabled}
+              onClick={checkPage5}
+            >다음</Button>
+          </>
+        )}
+        {currentPage === 6 && (
+          <>
+            <div style={{
+              ...fontStyles.heading2Medium, color: `${colors.textActive}`, marginTop: '16px'
+            }}>
+              공유하고 싶은 작품이나 페이지가 있나요?
+            </div>
+            <div style={{
+              ...fontStyles.subheadingRegular, color: `${colors.textDefault}`, marginTop: '4px',
+              marginBottom: '31px'
+            }}>
+              사운드클라우드, 포트폴리오 등 링크를 공유해주세요.
+            </div>
+            <InputField
+              type="url"
+              value={url}
+              onChange={handleUrlChange}
+              placeholder="www."
+              label="url"
+              marginBottom="440px"
+            ></InputField>
+            <Button
+              onClick={checkPage6}
+              disabled={false}
+            >다음</Button>
+          </>
+        )}
+        {currentPage === 7 && (
+          <>
+            <div style={{
+              ...fontStyles.heading2Medium, color: `${colors.textActive}`, marginTop: '16px'
+            }}>
+              어떤 뮤지션을 찾고 있나요?
+            </div>
+            <div style={{
+              ...fontStyles.subheadingRegular, color: `${colors.textDefault}`, marginTop: '4px',
+              marginBottom: '31px'
+            }}>
+              분야, 실력, 경험 등을 포함해주세요.
+            </div>
+            <InputField
+              type="commentary"
+              value={commentary}
+              onChange={handleCommentaryChange}
+              placeholder="ex) 힙합 래퍼 찾습니다."
+              helpMessage='한글, 영어, 숫자만 가능해요 (특수문자 X)'
+              maxCount={30}
+              maxLength={30}
+              currentCount={commentary.length as number}
+              label="한 줄 멘트"
+              marginBottom="440px"
+            ></InputField>
+            <Button
+              onClick={checkPage7}
+              disabled={commentary.length === 0}
+            >다음</Button>
+          </>
+        )}
+        {currentPage === 8 && (
+          <>
+            <div style={{
+              ...fontStyles.heading2Medium, color: `${colors.textActive}`, marginTop: '16px'
+            }}>
+              어디로 연락하면 되나요?
+            </div>
+            <div style={{
+              ...fontStyles.subheadingRegular, color: `${colors.textDefault}`, marginTop: '4px',
+              marginBottom: '31px'
+            }}>
+              1개 이상 작성해 주세요
+            </div>
+            <InputField
+              type="link"
+              value={openChatLink}
+              onChange={handleOpenChatLinkChange}
+              placeholder="카카오톡 오픈채팅방을 만들고 링크를 입력해주세요."
+              label="오픈채팅방 링크"
+              marginBottom="0px"
+            ></InputField>
+            <InputField
+              type="email"
+              value={contactEmail}
+              onChange={handleContactEmailChange}
+              placeholder="ex) greet@gmail.com"
+              label="이메일"
+              marginBottom="0px"
+            ></InputField>
+            <InputField
+              type="phoneNumber"
+              value={phoneNumber}
+              onChange={handlePhoneNumberChange}
+              placeholder="010-0000-0000"
+              label="전화번호"
+              marginBottom="0px"
+            ></InputField>
+            <InputField
+              type="id"
+              value={instagramId}
+              onChange={handleInstagramIdChange}
+              placeholder="ID"
+              label="인스타그램 ID"
+              marginBottom="143px"
+            ></InputField>
+            <Button
+              onClick={checkPage7}
+              disabled={isPage8ButtonDisabled}
+            >다음</Button>
           </>
         )}
 
@@ -284,3 +576,85 @@ export default function Onboarding() {
   )
 }
 
+const CameraStyle = styled.div`
+  position: absolute;
+  top: 90px;
+  left: 207px;
+  img {
+    max-width: 325px;
+  }
+  label {
+    display: inline-block;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+`;
+
+const CheckboxWrapper = styled.label`
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-bottom: 8px;
+  cursor: pointer;
+`;
+
+// 선택된 체크박스
+const CheckboxInput = styled.input`
+  margin: 0px;
+  accent-color: yellow;
+  height: 20px;
+  width: 20px;
+  box-sizing: border-box;
+  margin-right: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+// 선택되지 않은 체크박스
+const MyCheckBox = styled.span`
+  height: 20px;
+  width: 20px;
+  box-sizing: border-box;
+  background-color: ${colors.bgInput};
+  border: 1px ${colors.bgInputBorder} solid;
+  border-radius: 4px;
+  margin-right: 11px;
+`
+
+const CheckboxText = styled.span`
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+`;
+
+// 5페이지 장르 wrapper
+const GenreWrapper = styled.div`
+  font-weight: 700;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.95);
+  display: flex; 
+  align-items: center; 
+  width: calc(50% - 9px); 
+  height: 82px;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  border: 1px solid #1B1B1B;
+  border-radius: 8px;
+  justify-content: center;
+`

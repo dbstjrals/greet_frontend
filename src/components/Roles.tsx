@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { colors } from '../styles/colors';
 import InputField from './InputField';
-import Button from './Button';
 
 interface RolesProps {
   onSelectRoles: (selectedRoles: string[]) => void;
@@ -17,7 +16,7 @@ const Roles: React.FC<RolesProps> = ({ onSelectRoles, otherRole }) => {
     const updatedRoles = [...selectedRoles];
 
     if (updatedRoles.includes(role)) {
-      if(role === '그 외 직군'){
+      if (role === '그 외 직군') {
         setOtherRoles('');
         updatedRoles.splice(updatedRoles.indexOf(role), 1);
       } else {
@@ -36,7 +35,7 @@ const Roles: React.FC<RolesProps> = ({ onSelectRoles, otherRole }) => {
     setOtherRoles(updatedOtherRoles);
     otherRole(updatedOtherRoles);
   }
-  
+
 
   return (
     <div>
@@ -209,6 +208,7 @@ const CheckboxWrapper = styled.label`
   cursor: pointer;
 `;
 
+// 선택된 체크박스
 const CheckboxInput = styled.input`
   margin: 0px;
   accent-color: yellow;
@@ -219,6 +219,7 @@ const CheckboxInput = styled.input`
   border-radius: 4px;
 `;
 
+// 선택되지 않은 체크박스
 const MyCheckBox = styled.span`
   height: 20px;
   width: 20px;

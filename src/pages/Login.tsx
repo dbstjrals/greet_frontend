@@ -9,7 +9,7 @@ import { colors } from '../styles/colors';
 import PageContainer from '../components/PageContainer'
 
 // Images import
-import loginLogo from '../images/loginLogo.svg';
+import loginLogo from '../images/greetLogo.svg';
 import naverLogo from '../images/naverLogo.png';
 import kakaoLogo from '../images/kakaoLogo.png';
 import googleLogo from '../images/googleLogo.png';

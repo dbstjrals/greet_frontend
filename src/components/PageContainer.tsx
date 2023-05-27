@@ -7,7 +7,6 @@ const PageContainer = styled.div`
   padding: 0 16px 0 16px;
   margin-left: auto;
   margin-right: auto;
-  color: white;
 `;
 
 export default PageContainer;

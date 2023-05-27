@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 interface ButtonProps {
   type?: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   disabled?: boolean;
   children: ReactNode;
 }

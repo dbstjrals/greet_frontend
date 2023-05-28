@@ -9,8 +9,12 @@ import { fontStyles } from '../styles/fontStyle';
 // Image import
 import greetingIcon from '../images/greetingIcon.png';
 
+// Component import
+import GradientProfileImage from './GradientProfileImage';
+
 interface MemberCardContainerProps {
   userImage: string,
+  userColor: string,
   userName: string,
   userCommentary: string,
   userInfo: string,
@@ -20,6 +24,7 @@ interface MemberCardContainerProps {
 
 const MemberCardContainer: FC<MemberCardContainerProps> = ({
   userImage,
+  userColor,
   userName,
   userCommentary,
   userInfo,
@@ -29,9 +34,7 @@ const MemberCardContainer: FC<MemberCardContainerProps> = ({
   return (
     <CardContainer>
       <div style={{ display: 'flex', height: '40px', flexWrap: 'wrap', marginBottom: '10px' }}>
-        <ImageBorder>
-          <UserImage style={{ backgroundImage: `url(${userImage})` }}></UserImage>
-        </ImageBorder>
+        <GradientProfileImage userImage={userImage} gradientColor={userColor} />
         <div style={{ flex: '14' }}></div>
         <div style={{ flex: '231', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', position: 'relative' }}>
@@ -97,32 +100,6 @@ const CardContainer = styled.div`
   box-sizing: border-box;
   padding: 12px;
   background-color: ${colors.grey00}
-`
-const ImageBorder = styled.div`
-  flex: 40;
-  position: relative;
-  min-width: 40px;
-  flex-grow: 0;  
-  width: 40px;
-  height: 40px;
-  box-sizing: border-box;
-  border: 2px solid transparent;
-  border-radius: 50%;
-  background-image: linear-gradient(#fff, #fff),
-  linear-gradient(135deg, #FFF626 0%, #FF9B26 51.04%, #FF4D26 100%);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  `
-  // linear-gradient(to right, rgba(252,53,76,1), rgba(0,215,211,1));
-const UserImage = styled.div`
-  position: absolute;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  z-index: 1;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 `
 const RoundTag = styled.div`
   padding: 1px 8px;

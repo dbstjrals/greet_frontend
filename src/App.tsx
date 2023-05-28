@@ -12,6 +12,8 @@ import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
 import Onboarding from './pages/Onboarding';
 import Main from './pages/Main';
+import MemberList from './pages/MemberList';
+import Notification from './pages/Notification';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />}></Route>
         <Route path="/onboarding" element={<Onboarding />}></Route>
         <Route path="/main" element={<Main />}></Route>
+        <Route path="/member-list" element={<MemberList />}></Route>
+        <Route path="/notification" element={<Notification />}></Route>
       </Routes>
     </div>
   );

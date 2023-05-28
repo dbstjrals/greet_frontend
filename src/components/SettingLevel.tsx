@@ -5,6 +5,7 @@ import { colors } from '../styles/colors';
 interface LevelProps {
   label: string;
   labelNum: number;
+  level?: number;
   roleLevel: { role: string; level: number; }[];
   handleSettingLevel: (roleLevel: { role: string; level: number; }[], index: number, selectedLevel: number) => void;
 }
@@ -13,10 +14,11 @@ const SettingLevel: FC<LevelProps> = ({
   label,
   labelNum,
   roleLevel,
+  level,
   handleSettingLevel,
 }: LevelProps) => {
 
-  const [selectedLevel, setSelectedLevel] = useState<number>();
+  const [selectedLevel, setSelectedLevel] = useState<number>(level ? level : 0);
 
   return (
     <>
@@ -28,7 +30,7 @@ const SettingLevel: FC<LevelProps> = ({
               handleSettingLevel(roleLevel, labelNum - 1, 0);
               setSelectedLevel(0);
             }
-            else{
+            else {
               handleSettingLevel(roleLevel, labelNum - 1, 1);
               setSelectedLevel(1);
             }
@@ -50,7 +52,7 @@ const SettingLevel: FC<LevelProps> = ({
               handleSettingLevel(roleLevel, labelNum - 1, 0);
               setSelectedLevel(0);
             }
-            else{
+            else {
               handleSettingLevel(roleLevel, labelNum - 1, 2);
               setSelectedLevel(2);
             }
@@ -70,7 +72,7 @@ const SettingLevel: FC<LevelProps> = ({
               handleSettingLevel(roleLevel, labelNum - 1, 0);
               setSelectedLevel(0);
             }
-            else{
+            else {
               handleSettingLevel(roleLevel, labelNum - 1, 3);
               setSelectedLevel(3);
             }
@@ -108,10 +110,10 @@ const LevelboxWrapper = styled.label`
   font-size: 12px;
   line-height: 46px;
   font-weight: 500;
-  color: ${colors.textActive}
+  color: ${colors.textActive};
   display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   height: 46px;
   background-color: ${colors.bgInput};
   border-radius: 8px;

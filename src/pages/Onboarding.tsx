@@ -298,8 +298,8 @@ export default function Onboarding() {
               maxCount={10}
               maxLength={10}
               currentCount={teamName.length as number}
-              helpMessage={'한글, 영어, 숫자만 가능해요. (특수문자 X)'
-              }
+              helpMessage={'한글, 영어, 숫자만 가능해요. (특수문자 X)'}
+              helpMessageColor={colors.textMuted}
             ></InputField>
             <Button
               disabled={false}
@@ -507,6 +507,7 @@ export default function Onboarding() {
               onChange={handleCommentaryChange}
               placeholder="ex) 힙합 래퍼 찾습니다."
               helpMessage='한글, 영어, 숫자만 가능해요 (특수문자 X)'
+              helpMessageColor={colors.textMuted}
               maxCount={30}
               maxLength={30}
               currentCount={commentary.length as number}

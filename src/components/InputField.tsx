@@ -99,7 +99,7 @@ const InputField: React.FC<InputFieldProps> = ({
       readOnly={readOnly}
       maxLength={maxLength}
     />
-    <div style={{ display: 'flex', height: hasError ? '30px' : '' }}>
+    <div style={{ display: 'flex', height: hasError ? '30px' : '0px' }}>
       <div style={{
         ...fontStyles.caption1Regular, color: `${helpMessageColor}`, marginTop: '4px',
         height: '30px', lineHeight: '30px', display: helpMessage ? 'block' : 'none',

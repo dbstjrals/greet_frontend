@@ -11,6 +11,7 @@ import greetingIcon from '../images/greetingIcon.png';
 import likeIcon from '../images/likeIcon.svg';
 import commentIcon from '../images/commentIcon.svg';
 import viewIcon from '../images/viewIcon.svg';
+import defaultPostThumbnail from '../images/defaultPostThumbnail.png';
 
 // Component import
 import GradientProfileImage from './GradientProfileImage';
@@ -22,6 +23,7 @@ interface PostContainerProps {
   teamName?: string,
   postTag: string,
   postedDate: string,
+  postThumbnail?: string,
   likeCount: number,
   commentCount: number,
   viewCount: number,
@@ -34,6 +36,7 @@ const PostContainer: FC<PostContainerProps> = ({
   teamName,
   postTag,
   postedDate,
+  postThumbnail,
   likeCount,
   commentCount,
   viewCount,
@@ -50,14 +53,24 @@ const PostContainer: FC<PostContainerProps> = ({
           fontSize: '10px', fontWeight: '400', color: `${colors.textMuted}`
         }}>{postedDate}</span>
       </div>
-      <div style={{
-        ...fontStyles.subheadingSemibold, height: '21px', display: 'flex', marginBottom: '4px', color: `${colors.textActive}`,
-        lineHeight: '1.5'
-      }}>개인 레슨 합니다</div>
-      <div style={{
-        ...fontStyles.body3Regular, height: '38px', display: 'flex', marginBottom: '17px', color: `${colors.textDefault}`,
-        lineHeight: '19.2px', overflow: 'hidden'
-      }}>개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 ... 더보기</div>
+      <div style={{ display: 'flex' }}>
+        <div style={{
+          display: postThumbnail ? 'flex' : '', flexDirection: 'column',
+          marginRight: postThumbnail ? '16px' : ''
+        }}>
+          <div style={{
+            ...fontStyles.subheadingSemibold, height: '21px', display: 'flex', marginBottom: '4px', color: `${colors.textActive}`,
+            lineHeight: '1.5'
+          }}>개인 레슨 합니다</div>
+          <div style={{
+            ...fontStyles.body3Regular, height: '38px', display: 'flex', marginBottom: '17px', color: `${colors.textDefault}`,
+            lineHeight: '19.2px', overflow: 'hidden'
+          }}>개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 ... 더보기</div>
+        </div>
+        <div style={{ display: postThumbnail ? '' : 'none', borderRadius: '5px' }}>
+          <img src={postThumbnail} alt='썸네일' width='64px' height='64px'></img>
+        </div>
+      </div>
       <div style={{
         height: '26px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'
       }}>

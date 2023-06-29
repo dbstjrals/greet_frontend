@@ -27,26 +27,47 @@ const SearchContainer: FC<SearchContainerProps> = ({
 }: SearchContainerProps) => {
 
   const navigate = useNavigate();
-  const [recentKeyword, setRecentKeyword] = useState<string[]>(['작곡', '힙합', '작곡', '힙합', '작곡']);
-  const [recommendKeyword, setRecommendContainer] = useState<string[]>([
+
+  // 멤버 검색 관련 변수 및 함수
+  const [memberRecentKeyword, setMemeberRecentKeyword] = useState<string[]>(['작곡', '힙합', '작곡', '힙합', '작곡']);
+  const [memberRecommendKeyword, setMemberRecommendContainer] = useState<string[]>([
     '작곡/편곡가', '작사가', '보컬리스트', '래퍼', '베이시스트', '기타리스트', '싱어송라이터', '드러머'
     , '래퍼', '세션 연주가', '디제이', '음향 엔지니어', '프로듀서', '그 외 직군'
   ]);
 
-  const [showModal, setShowModal] = useState<boolean>(false);
-
   const handleDeleteMemberRecentKeywordOne = (index: number) => {
-    const updatedKeywords = recentKeyword.filter((_, i) => i !== index);
+    const updatedKeywords = memberRecentKeyword.filter((_, i) => i !== index);
     console.log(index);
-    setRecentKeyword(updatedKeywords);
+    setMemeberRecentKeyword(updatedKeywords);
   };
 
 
   const handleDeleteMemberRecentKeywordAll = () => {
     setShowModal(false);
-    setRecentKeyword([]);
+    setMemeberRecentKeyword([]);
     // 쿠키 내에 최근 검색어 지우기 (멤버 관련 최근 검색어만)
   };
+
+  // 게시판 검색 관련 변수 및 함수
+  const [boardRecentKeyword, setBoardRecentKeyword] = useState<string[]>(['악기', '레슨']);
+  const [boardRecommendKeyword, setBoardRecommendContainer] = useState<string[]>([
+    '개인레슨', '구인', '구직', '악기장터'
+  ]);
+
+  const handleDeleteBoardRecentKeywordOne = (index: number) => {
+    const updatedKeywords = boardRecentKeyword.filter((_, i) => i !== index);
+    console.log(index);
+    setBoardRecentKeyword(updatedKeywords);
+  };
+
+  const handleDeleteBoardRecentKeywordAll = () => {
+    setShowModal(false);
+    setBoardRecentKeyword([]);
+    // 쿠키 내에 최근 검색어 지우기 (게시판 관련 최근 검색어만)
+  };
+
+
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   return (
     <PageContainer style={{ padding: '0', width: '100%' }}>
@@ -89,7 +110,7 @@ const SearchContainer: FC<SearchContainerProps> = ({
                 }}>모두 지우기</div>
             </div>
 
-            {recentKeyword.length === 0 ?
+            {memberRecentKeyword.length === 0 ?
               <div style={{
                 ...fontStyles.subheadingRegular, color: `${colors.textDefault}`
               }}>
@@ -97,7 +118,7 @@ const SearchContainer: FC<SearchContainerProps> = ({
               </div>
               :
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', width: '270px' }}>
-                {recentKeyword.map((item, index) => {
+                {memberRecentKeyword.map((item, index) => {
                   return (
                     <RecentKewordTag>
                       <div
@@ -128,7 +149,7 @@ const SearchContainer: FC<SearchContainerProps> = ({
             <div style={{
               display: 'flex', gap: '8px', flexWrap: 'wrap'
             }}>
-              {recommendKeyword.map((item) => {
+              {memberRecommendKeyword.map((item) => {
                 return (
                   <RecommendKewordTag>{item}</RecommendKewordTag>
                 )
@@ -136,6 +157,72 @@ const SearchContainer: FC<SearchContainerProps> = ({
             </div>
           </RecommendKeywordContainer>
         </>}
+      {searchType === '게시판' &&
+        <>
+          <RecentKeywordContainer>
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              marginBottom: '16px'
+            }}>
+              <div style={{
+                ...fontStyles.heading3Semibold, color: `${colors.textActive}`
+              }}>최근 검색어</div>
+              <div
+                onClick={() => setShowModal(true)}
+                style={{
+                  ...fontStyles.subheadingRegular, color: `${colors.textDefault}`,
+                  cursor: 'pointer'
+                }}>모두 지우기</div>
+            </div>
+
+            {boardRecentKeyword.length === 0 ?
+              <div style={{
+                ...fontStyles.subheadingRegular, color: `${colors.textDefault}`
+              }}>
+                최근 검색어가 없습니다.
+              </div>
+              :
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', width: '270px' }}>
+                {boardRecentKeyword.map((item, index) => {
+                  return (
+                    <RecentKewordTag>
+                      <div
+                        style={{ cursor: 'pointer' }}>
+                        {item}
+                      </div>
+                      <img
+                        onClick={() => handleDeleteBoardRecentKeywordOne(index)}
+                        src={xIcon} alt="x"
+                        style={{ cursor: 'pointer' }}
+                      />
+                    </RecentKewordTag>
+                  )
+                })}
+              </div>
+            }
+          </RecentKeywordContainer>
+
+          <RecommendKeywordContainer>
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              marginBottom: '16px'
+            }}>
+              <div style={{
+                ...fontStyles.heading3Semibold, color: `${colors.textActive}`
+              }}>추천 검색어</div>
+            </div>
+            <div style={{
+              display: 'flex', gap: '8px', flexWrap: 'wrap'
+            }}>
+              {boardRecommendKeyword.map((item) => {
+                return (
+                  <RecommendKewordTag>{item}</RecommendKewordTag>
+                )
+              })}
+            </div>
+          </RecommendKeywordContainer>
+        </>
+      }
       {showModal &&
         <>
           <div style={{
@@ -168,7 +255,10 @@ const SearchContainer: FC<SearchContainerProps> = ({
                   , height: '47px', lineHeight: '47px', cursor: 'pointer'
                 }}>취소</div>
               <div
-                onClick={() => handleDeleteMemberRecentKeywordAll()}
+                onClick={() => {
+                  if (searchType === '멤버') handleDeleteMemberRecentKeywordAll();
+                  else handleDeleteBoardRecentKeywordAll();
+                }}
                 style={{
                   width: '50%', height: '47px', lineHeight: '47px', cursor: 'pointer'
                 }}>확인</div>

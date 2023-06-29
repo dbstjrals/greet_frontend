@@ -14,6 +14,8 @@ import Onboarding from './pages/Onboarding';
 import Main from './pages/Main';
 import MemberList from './pages/MemberList';
 import Notification from './pages/Notification';
+import PostBoard from './pages/PostBoard';
+import PostCreator from './pages/PostCreator';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/main" element={<Main />}></Route>
         <Route path="/member-list" element={<MemberList />}></Route>
         <Route path="/notification" element={<Notification />}></Route>
+        <Route path="/post-board" element={<PostBoard />}></Route>
+        <Route path="/create-post" element={<PostCreator />}></Route>
       </Routes>
     </div>
   );

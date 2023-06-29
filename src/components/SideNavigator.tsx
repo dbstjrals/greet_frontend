@@ -1,7 +1,7 @@
 // Module import
 import React, { FC, useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 // Style import
 import { fontStyles } from '../styles/fontStyle';
@@ -26,12 +26,13 @@ const SideNavigator: FC<SideNavigatorProps> = ({
 }: SideNavigatorProps) => {
   const navigate = useNavigate();
   const [hasAlert, setHasAlert] = useState<boolean>(true);
+  const location = useLocation();
+  const pathname = location.pathname;
 
   return (
     <div
       onClick={() => {
         closeOnclick(false);
-        console.log("Out Side");
       }}
       style={{
         zIndex: '2', position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
@@ -41,7 +42,6 @@ const SideNavigator: FC<SideNavigatorProps> = ({
         <div
           onClick={(e) => {
             e.stopPropagation(); // 클릭 이벤트 버블링(stopPropagation)을 막습니다.
-            console.log("In Side");
           }}
           style={{
             width: '79.49%', height: '100%', backgroundColor: "#101010", boxSizing: 'border-box',
@@ -101,17 +101,27 @@ const SideNavigator: FC<SideNavigatorProps> = ({
           </div>
           {/* 메뉴 리스트 */}
           <MenuWrapper
-            onClick={() => { navigate('/main'); }}>메인 홈</MenuWrapper>
+            onClick={() => {
+              if (pathname === '/main') closeOnclick(true);
+              else navigate('/main');
+            }}>메인 홈</MenuWrapper>
           <MenuWrapper
-            onClick={() => { navigate('/member-list'); }}>멤버리스트</MenuWrapper>
-          <MenuWrapper>게시판</MenuWrapper>
+            onClick={() => {
+              if (pathname === '/member-list') closeOnclick(true);
+              else navigate('/member-list');
+            }}>멤버리스트</MenuWrapper>
+          <MenuWrapper
+            onClick={() => {
+              if (pathname === '/post-board') closeOnclick(true);
+              else navigate('/post-board');
+            }}>게시판</MenuWrapper>
           <MenuWrapper>공지사항</MenuWrapper>
           <MenuWrapper>나의 Greet 리스트</MenuWrapper>
           <MenuWrapper>문의하기</MenuWrapper>
           <MenuWrapper>마이페이지</MenuWrapper>
         </div>
-      </PageContainer>
-    </div>
+      </PageContainer >
+    </div >
   );
 };
 

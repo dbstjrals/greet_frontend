@@ -97,6 +97,7 @@ export default function Main() {
         </TitleWrapper>
         <ContentWrapper>
           <Swiper
+            id="member-swiper"
             style={{ height: '312px' }}
             modules={[Navigation, Pagination]}
             spaceBetween={32}
@@ -165,15 +166,16 @@ export default function Main() {
           </Swiper>
         </ContentWrapper>
         <div style={{ height: '47px' }}></div>
-
         <TitleWrapper>
           <Title>새롭게 올라온 글</Title>
-          <FullView>
+          <FullView
+            onClick={() => navigate('/post-board')}>
             전체보기
             <img src={rightArrow} alt='>'></img>
           </FullView>
         </TitleWrapper>
         <Swiper
+          id="post-swiper"
           style={{ height: '359px' }}
           modules={[Navigation, Pagination]}
           spaceBetween={32}
@@ -184,6 +186,7 @@ export default function Main() {
         >
           <SwiperSlide>
             <PostContainer
+              postId={1}
               userImage={profileImage}
               userName="POL"
               userColor="135deg, #FFF626 0%, #FF9B26 51.04%, #FF4D26 100%"
@@ -194,6 +197,7 @@ export default function Main() {
               postedDate="1시간 전"
             />
             <PostContainer
+              postId={2}
               userImage={profileImage}
               userName="Rama"
               userColor="98.41deg, #5433FF 0%, #20BDFF 51.87%, #A5FECB 100%"
@@ -207,6 +211,7 @@ export default function Main() {
           </SwiperSlide>
           <SwiperSlide>
             <PostContainer
+              postId={3}
               userImage={profileImage}
               userName="POL"
               userColor="135deg, #FFF626 0%, #FF9B26 51.04%, #FF4D26 100%"
@@ -217,6 +222,7 @@ export default function Main() {
               postedDate="1시간 전"
             />
             <PostContainer
+              postId={4}
               userImage={profileImage}
               userName="Rama"
               userColor="98.41deg, #5433FF 0%, #20BDFF 51.87%, #A5FECB 100%"
@@ -230,6 +236,7 @@ export default function Main() {
           </SwiperSlide>
           <SwiperSlide>
             <PostContainer
+              postId={5}
               userImage={profileImage}
               userName="Rama"
               userColor="98.41deg, #5433FF 0%, #20BDFF 51.87%, #A5FECB 100%"

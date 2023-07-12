@@ -129,6 +129,7 @@ export default function PostBoard() {
         </CategoryContainer>
 
         <PostContainer
+          postId={1}
           userImage={profileImage}
           userName="POL"
           userColor="135deg, #FFF626 0%, #FF9B26 51.04%, #FF4D26 100%"
@@ -140,6 +141,7 @@ export default function PostBoard() {
           postThumbnail={defaultPostThumbnail}
         />
         <PostContainer
+          postId={2}
           userImage={profileImage}
           userName="Rama"
           userColor="98.41deg, #5433FF 0%, #20BDFF 51.87%, #A5FECB 100%"
@@ -151,6 +153,7 @@ export default function PostBoard() {
           teamName="딕키즈"
         />
         <PostContainer
+          postId={3}
           userImage={profileImage}
           userName="Rama"
           userColor="98.41deg, #5433FF 0%, #20BDFF 51.87%, #A5FECB 100%"
@@ -163,6 +166,7 @@ export default function PostBoard() {
 
         />
         <PostContainer
+          postId={4}
           postThumbnail={defaultPostThumbnail}
           userImage={profileImage}
           userName="Rama"

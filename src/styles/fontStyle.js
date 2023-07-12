@@ -55,13 +55,18 @@ export const fontStyles = {
     lineHeight: '150%'
   },
   body2Semibold: {
-    fontWeight: '700',
+    fontWeight: '600',
     fontSize: '14px',
     lineHeight: '150%'
   },
   body2Medium: {
     fontWeight: '500',
     fontSize: '14px',
+    lineHeight: '150%'
+  },
+  body3Semibold: {
+    fontWeight: '600',
+    fontSize: '12px',
     lineHeight: '150%'
   },
   body3Medium: {

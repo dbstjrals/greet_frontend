@@ -1,22 +1,22 @@
 // Module import
 import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 // Style import
 import { colors } from '../styles/colors';
 import { fontStyles } from '../styles/fontStyle';
 
 // Image import
-import greetingIcon from '../images/greetingIcon.png';
 import likeIcon from '../images/likeIcon.svg';
 import commentIcon from '../images/commentIcon.svg';
 import viewIcon from '../images/viewIcon.svg';
-import defaultPostThumbnail from '../images/defaultPostThumbnail.png';
 
 // Component import
 import GradientProfileImage from './GradientProfileImage';
 
 interface PostContainerProps {
+  postId: number,
   userImage: string,
   userName: string,
   userColor: string,
@@ -30,6 +30,7 @@ interface PostContainerProps {
 }
 
 const PostContainer: FC<PostContainerProps> = ({
+  postId,
   userImage,
   userName,
   userColor,
@@ -41,34 +42,42 @@ const PostContainer: FC<PostContainerProps> = ({
   commentCount,
   viewCount,
 }: PostContainerProps) => {
+
+  const navigate = useNavigate();
+
   return (
     <PostWrapper>
-      <div style={{
-        height: '18px', display: 'flex', marginBottom: '9px', justifyContent: 'space-between', alignItems: 'center'
-      }}>
-        <RoundTag style={{
-          backgroundColor: `${colors.bgOnSurface}`, color: `${colors.textMuted}`
-        }}>{postTag}</RoundTag>
-        <span style={{
-          fontSize: '10px', fontWeight: '400', color: `${colors.textMuted}`
-        }}>{postedDate}</span>
-      </div>
-      <div style={{ display: 'flex' }}>
+      <div
+        onClick={() => navigate(`/post-detail/${postId}`)}
+        style={{ cursor: 'pointer' }}>
         <div style={{
-          display: postThumbnail ? 'flex' : '', flexDirection: 'column',
-          marginRight: postThumbnail ? '16px' : ''
+          height: '18px', display: 'flex', marginBottom: '9px', justifyContent: 'space-between',
+          alignItems: 'center'
         }}>
-          <div style={{
-            ...fontStyles.subheadingSemibold, height: '21px', display: 'flex', marginBottom: '4px', color: `${colors.textActive}`,
-            lineHeight: '1.5'
-          }}>개인 레슨 합니다</div>
-          <div style={{
-            ...fontStyles.body3Regular, height: '38px', display: 'flex', marginBottom: '17px', color: `${colors.textDefault}`,
-            lineHeight: '19.2px', overflow: 'hidden'
-          }}>개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 ... 더보기</div>
+          <RoundTag style={{
+            backgroundColor: `${colors.bgOnSurface}`, color: `${colors.textMuted}`
+          }}>{postTag}</RoundTag>
+          <span style={{
+            fontSize: '10px', fontWeight: '400', color: `${colors.textMuted}`
+          }}>{postedDate}</span>
         </div>
-        <div style={{ display: postThumbnail ? '' : 'none', borderRadius: '5px' }}>
-          <img src={postThumbnail} alt='썸네일' width='64px' height='64px'></img>
+        <div style={{ display: 'flex' }}>
+          <div style={{
+            display: postThumbnail ? 'flex' : '', flexDirection: 'column',
+            marginRight: postThumbnail ? '16px' : ''
+          }}>
+            <div style={{
+              ...fontStyles.subheadingSemibold, height: '21px', display: 'flex', marginBottom: '4px', color: `${colors.textActive}`,
+              lineHeight: '1.5'
+            }}>개인 레슨 합니다</div>
+            <div style={{
+              ...fontStyles.body3Regular, height: '38px', display: 'flex', marginBottom: '17px', color: `${colors.textDefault}`,
+              lineHeight: '19.2px', overflow: 'hidden'
+            }}>개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 ... 더보기</div>
+          </div>
+          <div style={{ display: postThumbnail ? '' : 'none', borderRadius: '5px' }}>
+            <img src={postThumbnail} alt='썸네일' width='64px' height='64px'></img>
+          </div>
         </div>
       </div>
       <div style={{

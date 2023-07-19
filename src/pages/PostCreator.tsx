@@ -26,6 +26,7 @@ import attachImageIcon from "../images/attachImageIcon.png";
 import dropDownArrow from "../images/dropDownArrow.svg";
 import checkIcon from "../images/checkIcon.svg";
 import backIcon from "../images/back.svg";
+import ImageSwiper from "../components/ImageSwiper";
 
 interface Attachment {
   file: File;
@@ -446,77 +447,10 @@ export default function PostCreator() {
                   onChange={handleImageUpload}
                 />
               </CameraStyle>
-              <Swiper
-                style={{
-                  width: "calc(100% - 74px)",
-                  height: "64px",
-                  zIndex: "0",
-                  flexShrink: "0",
-                }}
-                slidesOffsetBefore={0}
-                slidesPerView="auto"
-                spaceBetween={10}
-                mousewheel
-                keyboard
-                freeMode
-                modules={[FreeMode, Mousewheel, Keyboard]}
-                observer={true}
-                observeParents={true}
-              >
-                {attachments.map((image, index) => (
-                  <SwiperSlide
-                    style={{
-                      width: "64px",
-                      height: "64px",
-                    }}
-                  >
-                    <div
-                      key={index}
-                      style={{
-                        display: "inline-block",
-                        marginRight:
-                          index === attachments.length - 1 ? "" : "10px",
-                        position: "relative",
-                      }}
-                    >
-                      <div
-                        style={{
-                          backgroundImage: `url(${URL.createObjectURL(
-                            image.file
-                          )})`,
-                          width: "64px",
-                          height: "64px",
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                          cursor: "pointer",
-                          borderRadius: "5px",
-                        }}
-                      ></div>
-                      <button
-                        onClick={() => handleImageDelete(image)}
-                        style={{
-                          position: "absolute",
-                          top: "1px",
-                          right: "1px",
-                          background: "transparent",
-                          padding: "0",
-                          border: "none",
-                          cursor: "pointer",
-                          width: "16px",
-                          height: "16px",
-                        }}
-                      >
-                        <img
-                          src={deleteImageIcon}
-                          alt="x"
-                          width="16px"
-                          height="16px"
-                        ></img>
-                      </button>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+              <ImageSwiper
+                handleImageDelete={handleImageDelete}
+                attachments={attachments}
+              />
             </div>
           </div>
 

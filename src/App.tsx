@@ -18,6 +18,7 @@ import PostBoard from "./pages/PostBoard";
 import PostCreator from "./pages/PostCreator";
 import PostDetail from "./pages/PostDeatil";
 import ScrollToTop from "./components/ScrollToTop";
+import MyPage from "./pages/Mypage";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/post-board" element={<PostBoard />}></Route>
         <Route path="/post-detail/:postId" element={<PostDetail />}></Route>
         <Route path="/create-post" element={<PostCreator />}></Route>
+        <Route path="/my-page" element={<MyPage />}></Route>
       </Routes>
     </div>
   );

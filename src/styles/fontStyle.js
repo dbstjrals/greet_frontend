@@ -67,17 +67,17 @@ export const fontStyles = {
   body3Semibold: {
     fontWeight: '600',
     fontSize: '12px',
-    lineHeight: '150%'
+    lineHeight: '160%'
   },
   body3Medium: {
     fontWeight: '500',
     fontSize: '12px',
-    lineHeight: '150%'
+    lineHeight: '160%'
   },
   body3Regular: {
     fontWeight: '400',
     fontSize: '12px',
-    lineHeight: '150%'
+    lineHeight: '160%'
   },
   caption1Medium: {
     fontWeight: '500',

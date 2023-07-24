@@ -27,7 +27,7 @@ const FilterContainer: FC<FilterContainerProps> = ({
 }: FilterContainerProps) => {
   const navigate = useNavigate();
   const [filterKeyword, setFilterKeyword] = useState<string[]>([
-    '작곡/편곡가', '작사가', '보컬리스트', '래퍼', '베이시스트', '기타리스트', '싱어송라이터', '드러머'
+    '작곡/편곡가', '작사가', '보컬리스트', '베이시스트', '기타리스트', '싱어송라이터', '드러머'
     , '래퍼', '세션 연주가', '디제이', '음향 엔지니어', '프로듀서', '그 외 직군'
   ]);
   const [selectedFilterKeyword, setSelectedFilterKeyword] = useState<string[]>([]);

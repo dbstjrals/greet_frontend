@@ -1,5 +1,5 @@
 // Module import
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -94,12 +94,18 @@ export default function PostCreator() {
   };
 
   // 첨부 사진 삭제
-  const handleImageDelete = (image: Attachment) => {
-    const updatedAttachments = attachments.filter(
-      (item: Attachment) => item !== image
-    );
-    setAttachments(updatedAttachments);
-  };
+  // const handleImageDelete = (image: Attachment) => {
+  //   const updatedAttachments = attachments.filter(
+  //     (item: Attachment) => item !== image
+  //   );
+  //   setAttachments(updatedAttachments);
+  // };
+
+  const handleImageDelete = useCallback(
+    (image: Attachment) =>
+      setAttachments((prev) => prev.filter((item) => item !== image)),
+    []
+  )
 
   // 완료 버튼 활성화
   const checkPost = postTitle && postContent && selectedCategory;

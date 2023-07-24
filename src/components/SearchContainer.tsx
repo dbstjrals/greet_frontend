@@ -31,7 +31,7 @@ const SearchContainer: FC<SearchContainerProps> = ({
   // 멤버 검색 관련 변수 및 함수
   const [memberRecentKeyword, setMemeberRecentKeyword] = useState<string[]>(['작곡', '힙합', '작곡', '힙합', '작곡']);
   const [memberRecommendKeyword, setMemberRecommendContainer] = useState<string[]>([
-    '작곡/편곡가', '작사가', '보컬리스트', '래퍼', '베이시스트', '기타리스트', '싱어송라이터', '드러머'
+    '작곡/편곡가', '작사가', '보컬리스트', '베이시스트', '기타리스트', '싱어송라이터', '드러머'
     , '래퍼', '세션 연주가', '디제이', '음향 엔지니어', '프로듀서', '그 외 직군'
   ]);
 

@@ -55,13 +55,16 @@ const ProfilePortfolioSection: FC<ProfilePortfolioSectionProps> = ({
           padding: "10px 16px",
           backgroundColor: `${colors.bgInput}`,
           border: `1px solid ${colors.bgInputBorder}`,
-          borderRadius: "6px",
+          borderRadius: "8px",
           ...fontStyles.body2Medium,
           color: `${colors.textActive}`,
-          cursor: "pointer",
+          // cursor: "pointer",
+          whiteSpace: "nowrap",
         }}
       >
-        www.notion.so/23-06-01-b689fe7c98e24des3d...
+        <div style={{ overflow: "hidden", width: "100%" }}>
+          www.notion.so/23-06-01-b689fe7c98e24des3d.adsfasfd
+        </div>
       </div>
     </section>
   );

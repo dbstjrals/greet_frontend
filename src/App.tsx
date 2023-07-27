@@ -6,6 +6,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./styles/font.css";
 
 // Components import
+import ScrollToTop from "./components/ScrollToTop";
 import Login from "./pages/Login";
 import EmailLogin from "./pages/EmailLogin";
 import SignUp from "./pages/SignUp";
@@ -17,8 +18,8 @@ import Notification from "./pages/Notification";
 import PostBoard from "./pages/PostBoard";
 import PostCreator from "./pages/PostCreator";
 import PostDetail from "./pages/PostDeatil";
-import ScrollToTop from "./components/ScrollToTop";
 import MyPage from "./pages/Mypage";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/post-detail/:postId" element={<PostDetail />}></Route>
         <Route path="/create-post" element={<PostCreator />}></Route>
         <Route path="/my-page" element={<MyPage />}></Route>
+        <Route path="/profile/:memberId" element={<Profile />}></Route>
       </Routes>
     </div>
   );

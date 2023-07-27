@@ -11,7 +11,7 @@ export const colors = {
   grey10: '#4E4E4E',
   grey05: '#383838',
   grey00: '#1B1B1B',
-  textActive: 'rgba(255, 255, 255, 0.95)',
+  textActive: 'rgba(255, 255, 255, 1)',
   textDarken: 'rgba(0, 0, 0, 0.85)',
   textDefault: 'rgba(255, 255, 255, 0.75)',
   textMuted: 'rgba(255, 255, 255, 0.55)',

@@ -64,6 +64,11 @@ export const fontStyles = {
     fontSize: '14px',
     lineHeight: '150%'
   },
+  body2Regular: {
+    fontWeight: '400',
+    fontSize: '14px',
+    lineHeight: '150%'
+  },
   body3Semibold: {
     fontWeight: '600',
     fontSize: '12px',

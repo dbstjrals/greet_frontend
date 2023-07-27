@@ -207,7 +207,7 @@ const FilterContainer: FC<FilterContainerProps> = ({
             카테고리 변경에 따라 나열 데이터를 바꿔야 함
           */}
             <MemberCardContainer
-              key={1}
+              userId={1}
               userImage={profileImage}
               userColor="135deg, #FFF626 0%, #FF9B26 51.04%, #FF4D26 100%"
               userName="POL"
@@ -216,7 +216,7 @@ const FilterContainer: FC<FilterContainerProps> = ({
               userRoleLevel={[{ role: '래퍼', level: 1 }]}
             />
             <MemberCardContainer
-              key={2}
+              userId={2}
               userImage={profileImage}
               userColor="98.41deg, #5433FF 0%, #20BDFF 51.87%, #A5FECB 100%"
               userName="RAMA"
@@ -226,7 +226,7 @@ const FilterContainer: FC<FilterContainerProps> = ({
               teamName="딕키즈"
             />
             <MemberCardContainer
-              key={3}
+              userId={3}
               userImage={profileImage}
               userColor="98.41deg, #FC354C 0%, #00D7D3 100%"
               userName="샤로캣"
@@ -235,7 +235,7 @@ const FilterContainer: FC<FilterContainerProps> = ({
               userRoleLevel={[{ role: '래퍼', level: 2 }, { role: '작곡/편곡가', level: 2 }]}
             />
             <MemberCardContainer
-              key={4}
+              userId={4}
               userImage={profileImage}
               userColor="98.41deg, #00B09B 0%, #96C93D 100%"
               userName="로켓"
@@ -245,7 +245,7 @@ const FilterContainer: FC<FilterContainerProps> = ({
               userRoleLevel={[{ role: '래퍼', level: 3 }, { role: '디제이', level: 2 }]}
             />
             <MemberCardContainer
-              key={5}
+              userId={5}
               userImage={profileImage}
               userColor="98.41deg, #FFF626 0%, #FF6726 52.29%, #FF2674 100%"
               userName="빙빙"

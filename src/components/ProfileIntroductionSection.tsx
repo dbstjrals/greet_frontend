@@ -38,7 +38,13 @@ const ProfileIntroductionSection: FC<ProfileIntroductionSectionProps> = ({
           marginBottom: "1px",
         }}
       >
-        <h3 style={{ ...fontStyles.heading3Semibold, height: "22px" }}>
+        <h3
+          style={{
+            ...fontStyles.heading3Semibold,
+            height: "22px",
+            cursor: "pointer",
+          }}
+        >
           나를 소개해요
         </h3>
         {isMyPage && (
@@ -49,11 +55,25 @@ const ProfileIntroductionSection: FC<ProfileIntroductionSectionProps> = ({
           />
         )}
       </div>
-      <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "10px",
+          alignItems: "center",
+          cursor: "pointer",
+        }}
+      >
         <RoleContainer>작곡/편곡가</RoleContainer>
         <RoleLevel>최근에 시작했어요</RoleLevel>
       </div>
-      <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "10px",
+          alignItems: "center",
+          cursor: "pointer",
+        }}
+      >
         <RoleContainer>래퍼</RoleContainer>
         <RoleLevel>열심히 하고 있어요</RoleLevel>
       </div>

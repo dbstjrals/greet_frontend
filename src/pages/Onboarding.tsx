@@ -34,7 +34,7 @@ export default function Onboarding() {
   const navigate = useNavigate();
 
   // 현재 페이지 저장 변수
-  const [currentPage, setCurrentPage] = useState<number>(7);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   // 1페이지 관련 변수 및 함수
   const [image, setImage] = useState(defaultProfileImage);

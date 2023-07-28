@@ -2,18 +2,18 @@
 import { useNavigate } from "react-router-dom";
 
 // Style import
-import { fontStyles } from '../styles/fontStyle';
-import { colors } from '../styles/colors';
+import { fontStyles } from "../styles/fontStyle";
+import { colors } from "../styles/colors";
 
 // Components import
-import PageContainer from '../components/PageContainer'
+import PageContainer from "../components/PageContainer";
 
 // Images import
-import loginLogo from '../images/greetLogo.svg';
-import naverLogo from '../images/naverLogo.png';
-import kakaoLogo from '../images/kakaoLogo.png';
-import googleLogo from '../images/googleLogo.png';
-import SocialLoginBtn from '../components/SocialLoginBtn';
+import loginLogo from "../images/greetLogo.svg";
+import naverLogo from "../images/naverLogo.png";
+import kakaoLogo from "../images/kakaoLogo.png";
+import googleLogo from "../images/googleLogo.png";
+import SocialLoginBtn from "../components/SocialLoginBtn";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -21,17 +21,24 @@ export default function Login() {
   return (
     <PageContainer>
       {/* 로고 */}
-      <img src={loginLogo} alt='Greet Logo'
-        style={{ marginTop: '87px', marginBottom: '27.76px' }}>
-      </img>
+      <img
+        onClick={() => navigate("/main")}
+        src={loginLogo}
+        alt="Greet Logo"
+        style={{ marginTop: "87px", marginBottom: "27.76px" }}
+      ></img>
 
       {/* 캐치프레이즈 */}
       <div
+        onClick={() => navigate("/onboarding")}
         style={{
-          ...fontStyles.heading1Medium, color: `${colors.textActive}`
-          , marginBottom: '114px'
-        }}>
-        캐치프레이즈가 들어갈 자리 <br />입니다.
+          ...fontStyles.heading1Medium,
+          color: `${colors.textActive}`,
+          marginBottom: "114px",
+        }}
+      >
+        캐치프레이즈가 들어갈 자리 <br />
+        입니다.
       </div>
 
       {/* 소셜 로그인 */}
@@ -69,21 +76,25 @@ export default function Login() {
       {/* 로그인 및 회원가입 */}
       <div
         style={{
-          ...fontStyles.caption1Medium, color: `${colors.textActive}`,
-          textAlign: 'center'
-        }}>
+          ...fontStyles.caption1Medium,
+          color: `${colors.textActive}`,
+          textAlign: "center",
+        }}
+      >
         <span
-          style={{ padding: '0 14px', cursor: 'pointer' }}
-          onClick={() => navigate('/email-login')}
-        >로그인</span>
+          style={{ padding: "0 14px", cursor: "pointer" }}
+          onClick={() => navigate("/email-login")}
+        >
+          로그인
+        </span>
         |
         <span
-          style={{ padding: '0 16px', cursor: 'pointer' }}
-          onClick={() => navigate('/sign-up')}
-        >다른 방법으로 회원가입</span>
+          style={{ padding: "0 16px", cursor: "pointer" }}
+          onClick={() => navigate("/sign-up")}
+        >
+          다른 방법으로 회원가입
+        </span>
       </div>
-
     </PageContainer>
-  )
+  );
 }
-

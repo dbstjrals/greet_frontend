@@ -36,10 +36,11 @@ export default function MyPage() {
       />
       <ProfileGenreSection isMyPage={true} />
       <ProfilePortfolioSection isMyPage={true} />
-      <ProfileCommentSection isMyPage={true} />
+      <ProfileCommentSection />
       <hr
         style={{
-          border: `10px solid ${colors.bgDivider}`,
+          border: "none",
+          borderTop: `10px solid ${colors.bgDivider}`,
           margin: "0 0 40px 0",
         }}
       />
@@ -94,7 +95,8 @@ export default function MyPage() {
 }
 
 const SectionSeparator = styled.hr`
-  border: 1px solid ${colors.grey05};
+  border: none;
+  border-top: 0.5px solid ${colors.grey05};
   margin: 0px;
 `;
 

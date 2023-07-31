@@ -10,12 +10,11 @@ import rightArrowIcon from "../images/rightArrow.svg";
 import defaultProfileImage from "../images/defaultProfileImage.png";
 
 interface ProfileCommentSectionProps {
-  isMyPage: boolean;
+  // isMyPage: boolean;
 }
 
-const ProfileCommentSection: FC<ProfileCommentSectionProps> = ({
-  isMyPage,
-}: ProfileCommentSectionProps) => {
+const ProfileCommentSection: FC<ProfileCommentSectionProps> = ({}: // isMyPage,
+ProfileCommentSectionProps) => {
   return (
     <section
       style={{
@@ -41,13 +40,13 @@ const ProfileCommentSection: FC<ProfileCommentSectionProps> = ({
         >
           댓글&nbsp;30
         </h3>
-        {isMyPage && (
-          <img
-            style={{ cursor: "pointer" }}
-            src={rightArrowIcon}
-            alt="댓글 수정하기"
-          />
-        )}
+        {/* {isMyPage && ( */}
+        <img
+          style={{ cursor: "pointer" }}
+          src={rightArrowIcon}
+          alt="댓글 수정하기"
+        />
+        {/* )} */}
       </div>
       <div
         style={{

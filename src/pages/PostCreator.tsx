@@ -105,7 +105,7 @@ export default function PostCreator() {
     (image: Attachment) =>
       setAttachments((prev) => prev.filter((item) => item !== image)),
     []
-  )
+  );
 
   // 완료 버튼 활성화
   const checkPost = postTitle && postContent && selectedCategory;

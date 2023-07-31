@@ -39,16 +39,20 @@ const PostPopup: FC<PostPopupProps> = ({
         backgroundColor: "rgba(0, 0, 0, 0.6)",
       }}
     >
-      <PageContainer style={{ position: "relative" }}>
+      <PageContainer>
         <div
           onClick={(e) => {
             e.stopPropagation(); // 클릭 이벤트 버블링(stopPropagation)을 막습니다.
           }}
           style={{
             width: "calc(100% - 32px)",
+            maxWidth: "468px",
             boxSizing: "border-box",
             color: "white",
-            position: "absolute",
+            position: "fixed",
+            margin: "0 auto",
+            left: "0",
+            right: "0",
             bottom: "5px",
             display: "flex",
             flexDirection: "column",
@@ -71,7 +75,7 @@ const PostPopup: FC<PostPopupProps> = ({
               {isPost ? "게시물 수정" : isMine ? "댓글 수정" : "대댓글"}
             </ButtonWrapper>
           )}
-          <ButtonWrapper style={{ borderRadius: isMine ? "0 0 6px 6px" : "" }}>
+          <ButtonWrapper style={{ borderRadius: "0 0 6px 6px" }}>
             {isPost
               ? isMine
                 ? "게시물 삭제"

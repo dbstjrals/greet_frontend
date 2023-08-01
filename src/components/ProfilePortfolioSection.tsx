@@ -35,7 +35,7 @@ const ProfilePortfolioSection: FC<ProfilePortfolioSectionProps> = ({
           style={{
             ...fontStyles.heading3Semibold,
             height: "22px",
-            cursor: "pointer",
+            cursor: isMyPage ? "pointer" : "",
           }}
         >
           포트폴리오
@@ -58,7 +58,7 @@ const ProfilePortfolioSection: FC<ProfilePortfolioSectionProps> = ({
           borderRadius: "8px",
           ...fontStyles.body2Medium,
           color: `${colors.textActive}`,
-          // cursor: "pointer",
+          cursor: "pointer",
           whiteSpace: "nowrap",
         }}
       >

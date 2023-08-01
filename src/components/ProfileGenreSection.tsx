@@ -36,14 +36,14 @@ const ProfileGenreSection: FC<ProfileGenreSectionProps> = ({
           style={{
             ...fontStyles.heading3Semibold,
             height: "22px",
-            cursor: "pointer",
+            cursor: isMyPage ? "pointer" : "",
           }}
         >
           선호하는 음악 장르
         </h3>
         {isMyPage && (
           <img
-            style={{ cursor: "pointer" }}
+            style={{ cursor: isMyPage ? "pointer" : "" }}
             src={rightArrowIcon}
             alt="선호 장르 수정하기"
           />
@@ -54,7 +54,7 @@ const ProfileGenreSection: FC<ProfileGenreSectionProps> = ({
           display: "flex",
           gap: "8px 6px",
           flexWrap: "wrap",
-          cursor: "pointer",
+          cursor: isMyPage ? "pointer" : "",
         }}
       >
         <GenreBox>팝</GenreBox>

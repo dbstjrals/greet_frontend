@@ -126,7 +126,7 @@ const ProfileMainSection: FC<ProfileMainSectionProps> = ({
         {/* 이름 & 팀 */}
         <div
           style={{
-            cursor: isMyPage ? "" : "pointer",
+            cursor: isMyPage ? "pointer" : "",
             display: "flex",
             width: "150px",
             height: "51px",

@@ -37,14 +37,14 @@ const ProfileCareerSection: FC<ProfileCareerSectionProps> = ({
           style={{
             ...fontStyles.heading3Semibold,
             height: "22px",
-            cursor: "pointer",
+            cursor: isMyPage ? "pointer" : "",
           }}
         >
           이력사항
         </h3>
         {isMyPage && (
           <img
-            style={{ cursor: "pointer" }}
+            style={{ cursor: isMyPage ? "pointer" : "" }}
             src={rightArrowIcon}
             alt="이력사항 수정하기"
           />
@@ -59,7 +59,7 @@ const ProfileCareerSection: FC<ProfileCareerSectionProps> = ({
           borderRadius: "8px",
           color: careerContent ? `${colors.textActive}` : `${colors.textMuted}`,
           wordBreak: "keep-all",
-          cursor: "pointer",
+          cursor: isMyPage ? "pointer" : "",
         }}
       >
         {careerContent}

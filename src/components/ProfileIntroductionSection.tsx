@@ -42,14 +42,14 @@ const ProfileIntroductionSection: FC<ProfileIntroductionSectionProps> = ({
           style={{
             ...fontStyles.heading3Semibold,
             height: "22px",
-            cursor: "pointer",
+            cursor: isMyPage ? "pointer" : "",
           }}
         >
           나를 소개해요
         </h3>
         {isMyPage && (
           <img
-            style={{ cursor: "pointer" }}
+            style={{ cursor: isMyPage ? "pointer" : "" }}
             src={rightArrowIcon}
             alt="나를 소개해요 수정하기"
           />
@@ -60,7 +60,7 @@ const ProfileIntroductionSection: FC<ProfileIntroductionSectionProps> = ({
           display: "flex",
           gap: "10px",
           alignItems: "center",
-          cursor: "pointer",
+          cursor: isMyPage ? "pointer" : "",
         }}
       >
         <RoleContainer>작곡/편곡가</RoleContainer>
@@ -71,7 +71,7 @@ const ProfileIntroductionSection: FC<ProfileIntroductionSectionProps> = ({
           display: "flex",
           gap: "10px",
           alignItems: "center",
-          cursor: "pointer",
+          cursor: isMyPage ? "pointer" : "",
         }}
       >
         <RoleContainer>래퍼</RoleContainer>

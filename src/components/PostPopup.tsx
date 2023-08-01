@@ -48,7 +48,7 @@ const PostPopup: FC<PostPopupProps> = ({
             width: "calc(100% - 32px)",
             maxWidth: "468px",
             boxSizing: "border-box",
-            color: "white",
+            color: `${colors.textActive}`,
             position: "fixed",
             margin: "0 auto",
             left: "0",
@@ -63,8 +63,10 @@ const PostPopup: FC<PostPopupProps> = ({
             <ButtonWrapper
               onClick={
                 isPost
+                // 게시물 수정
                   ? () => closeOnclick(false)
                   : isMine
+                  // 댓글 수정
                   ? () => closeOnclick(false)
                   : () => {
                       closeOnclick(false);
@@ -75,7 +77,7 @@ const PostPopup: FC<PostPopupProps> = ({
               {isPost ? "게시물 수정" : isMine ? "댓글 수정" : "대댓글"}
             </ButtonWrapper>
           )}
-          <ButtonWrapper style={{ borderRadius: "0 0 6px 6px" }}>
+          <ButtonWrapper style={{ borderRadius: !isMine && isPost ? "6px" : "0 0 6px 6px"}}>
             {isPost
               ? isMine
                 ? "게시물 삭제"

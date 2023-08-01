@@ -99,7 +99,7 @@ export default function PostDetail() {
         <PostPopup
           closeOnclick={() => setShowPostKebabPopup(false)}
           isPost={true}
-          isMine={true} // 내 게시물인지 체크해야 함
+          isMine={false} // 내 게시물인지 체크해야 함
         />
       )}
       {showCommentKebabPopup && (

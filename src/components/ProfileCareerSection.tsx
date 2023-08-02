@@ -38,6 +38,7 @@ const ProfileCareerSection: FC<ProfileCareerSectionProps> = ({
             ...fontStyles.heading3Semibold,
             height: "22px",
             cursor: isMyPage ? "pointer" : "",
+            color: `${colors.textActive}`,
           }}
         >
           이력사항

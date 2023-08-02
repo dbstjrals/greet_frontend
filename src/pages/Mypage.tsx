@@ -36,7 +36,7 @@ export default function MyPage() {
       />
       <ProfileGenreSection isMyPage={true} />
       <ProfilePortfolioSection isMyPage={true} />
-      <ProfileCommentSection />
+      <ProfileCommentSection isMyPage={true} />
       <hr
         style={{
           border: "none",

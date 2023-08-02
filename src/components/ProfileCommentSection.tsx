@@ -1,5 +1,6 @@
 // Module import
 import { FC } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 // Style import
 import { colors } from "../styles/colors";
@@ -10,11 +11,22 @@ import rightArrowIcon from "../images/rightArrow.svg";
 import defaultProfileImage from "../images/defaultProfileImage.png";
 
 interface ProfileCommentSectionProps {
-  // isMyPage: boolean;
+  isMyPage: boolean;
 }
 
-const ProfileCommentSection: FC<ProfileCommentSectionProps> = ({}: // isMyPage,
-ProfileCommentSectionProps) => {
+const ProfileCommentSection: FC<ProfileCommentSectionProps> = ({
+  isMyPage,
+}: ProfileCommentSectionProps) => {
+  const navigate = useNavigate();
+  const { memberId } = useParams();
+  const myId = 1;
+  let path = "";
+  if (isMyPage) {
+    path = `/profile/${myId}/comment`;
+  } else {
+    path = `/profile/${memberId}/comment`;
+  }
+
   return (
     <section
       style={{
@@ -32,16 +44,19 @@ ProfileCommentSectionProps) => {
         }}
       >
         <h3
+          onClick={() => navigate(`${path}`)}
           style={{
             ...fontStyles.heading3Semibold,
             height: "22px",
             cursor: "pointer",
+            color: `${colors.textActive}`,
           }}
         >
-          댓글&nbsp;30
+          댓글&nbsp;10
         </h3>
         {/* {isMyPage && ( */}
         <img
+          onClick={() => navigate(`${path}`)}
           style={{ cursor: "pointer" }}
           src={rightArrowIcon}
           alt="댓글 수정하기"
@@ -49,6 +64,7 @@ ProfileCommentSectionProps) => {
         {/* )} */}
       </div>
       <div
+        onClick={() => navigate(`${path}`)}
         style={{
           ...fontStyles.body2Medium,
           padding: "14.5px 50px 14.5px 12px",

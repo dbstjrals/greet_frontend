@@ -43,6 +43,7 @@ const ProfileIntroductionSection: FC<ProfileIntroductionSectionProps> = ({
             ...fontStyles.heading3Semibold,
             height: "22px",
             cursor: isMyPage ? "pointer" : "",
+            color: `${colors.textActive}`,
           }}
         >
           나를 소개해요
@@ -99,6 +100,7 @@ const RoleLevel = styled.span`
   font-size: 14px;
   font-weight: 500;
   line-height: 33px;
+  color: ${colors.textActive};
 `;
 
 export default ProfileIntroductionSection;

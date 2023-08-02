@@ -37,6 +37,7 @@ const ProfileGenreSection: FC<ProfileGenreSectionProps> = ({
             ...fontStyles.heading3Semibold,
             height: "22px",
             cursor: isMyPage ? "pointer" : "",
+            color: `${colors.textActive}`,
           }}
         >
           선호하는 음악 장르

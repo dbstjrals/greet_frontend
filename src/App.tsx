@@ -20,10 +20,16 @@ import PostCreator from "./pages/PostCreator";
 import PostDetail from "./pages/PostDeatil";
 import MyPage from "./pages/Mypage";
 import Profile from "./pages/Profile";
+import ProfileComment from "./pages/ProfileComment";
+import EditTheme from "./pages/edit/EditTheme";
+import EditProfile from "./pages/edit/EditProfile";
+import EditIntroduction from "./pages/edit/EditIntroduction";
 
 function App() {
   return (
-    <div style={{ fontFamily: "Pretendard" }}>
+    <div
+      style={{ fontFamily: "Pretendard", maxWidth: "500px", margin: "0 auto" }}
+    >
       <ScrollToTop /> {/* 페이지 이동 시 스크롤 초기화 컴포넌트 */}
       <Routes>
         <Route path="/" element={<Login />}></Route>
@@ -38,7 +44,17 @@ function App() {
         <Route path="/post-detail/:postId" element={<PostDetail />}></Route>
         <Route path="/create-post" element={<PostCreator />}></Route>
         <Route path="/my-page" element={<MyPage />}></Route>
+        <Route path="/my-page/edit/theme" element={<EditTheme />} />
+        <Route path="/my-page/edit/profile" element={<EditProfile />} />
+        <Route
+          path="/my-page/edit/introduction"
+          element={<EditIntroduction />}
+        />
         <Route path="/profile/:memberId" element={<Profile />}></Route>
+        <Route
+          path="/profile/:memberId/comment"
+          element={<ProfileComment />}
+        ></Route>
       </Routes>
     </div>
   );

@@ -1,5 +1,6 @@
 // Module import
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Style import
 import { fontStyles } from "../styles/fontStyle";
@@ -20,6 +21,8 @@ interface ProfileMainSectionProps {
 const ProfileMainSection: FC<ProfileMainSectionProps> = ({
   isMyPage,
 }: ProfileMainSectionProps) => {
+  const navigate = useNavigate();
+
   return (
     <section
       style={{ maxWidth: "500px", margin: "0 auto 20px auto", height: "275px" }}
@@ -69,6 +72,7 @@ const ProfileMainSection: FC<ProfileMainSectionProps> = ({
         {/* 배경화면 수정 */}
         {isMyPage && (
           <div
+            onClick={() => navigate("edit/theme")}
             style={{
               cursor: "pointer",
               display: "flex",
@@ -125,6 +129,7 @@ const ProfileMainSection: FC<ProfileMainSectionProps> = ({
         </div>
         {/* 이름 & 팀 */}
         <div
+          onClick={() => navigate("edit/profile")}
           style={{
             cursor: isMyPage ? "pointer" : "",
             display: "flex",
@@ -141,7 +146,6 @@ const ProfileMainSection: FC<ProfileMainSectionProps> = ({
           }}
         >
           <div
-            // onClick={()=> "프로필 수정"}
             style={{
               ...fontStyles.heading2Medium,
               position: "relative",

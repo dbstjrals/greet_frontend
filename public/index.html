@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Greet Website" />
+    <meta name="color-scheme" content="light only" />
+    <meta name="supported-color-schemes" content="light" />
     <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
     <!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> -->
     <!--
@@ -30,7 +32,23 @@
     />
   </head>
 
-  <style></style>
+  <style>
+    :root {
+      color-scheme: light only;
+    }
+    /* Firefox */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: light;
+      }
+    }
+    /* Chrome */
+    @media (forced-colors: active) {
+      :root {
+        color-scheme: light;
+      }
+    }
+  </style>
 
   <body style="background-color: #101010">
     <div id="root"></div>

@@ -8,6 +8,7 @@ import { fontStyles } from "../styles/fontStyle";
 
 // Image import
 import rightArrowIcon from "../images/rightArrow.svg";
+import { useNavigate } from "react-router-dom";
 
 interface ProfileGenreSectionProps {
   isMyPage: boolean;
@@ -16,6 +17,7 @@ interface ProfileGenreSectionProps {
 const ProfileGenreSection: FC<ProfileGenreSectionProps> = ({
   isMyPage,
 }: ProfileGenreSectionProps) => {
+  const navigate = useNavigate();
   return (
     <section
       style={{
@@ -33,6 +35,7 @@ const ProfileGenreSection: FC<ProfileGenreSectionProps> = ({
         }}
       >
         <h3
+          onClick={isMyPage ? () => navigate("edit/genre") : undefined}
           style={{
             ...fontStyles.heading3Semibold,
             height: "22px",
@@ -44,6 +47,7 @@ const ProfileGenreSection: FC<ProfileGenreSectionProps> = ({
         </h3>
         {isMyPage && (
           <img
+            onClick={isMyPage ? () => navigate("edit/genre") : undefined}
             style={{ cursor: isMyPage ? "pointer" : "" }}
             src={rightArrowIcon}
             alt="선호 장르 수정하기"
@@ -51,6 +55,7 @@ const ProfileGenreSection: FC<ProfileGenreSectionProps> = ({
         )}
       </div>
       <div
+        onClick={isMyPage ? () => navigate("edit/genre") : undefined}
         style={{
           display: "flex",
           gap: "8px 6px",

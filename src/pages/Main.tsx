@@ -125,6 +125,7 @@ export default function Main() {
                   userCommentary="경험많은 힙합 래퍼 찾아요!"
                   userInfo="OOO앨범에 OOO로 참여한 적 있고, OOOO프로그램에 OO로 방송 출연한 적 있습니다! OOO앨범에 OOO로 참여한 적 있고 OOOO... 더보기"
                   userRoleLevel={[{ role: "래퍼", level: 1 }]}
+                  isGreet={false}
                 />
                 <div style={{ height: "14px" }}></div>
                 <MemberCardContainer
@@ -138,6 +139,7 @@ export default function Main() {
                     { role: "래퍼", level: 1 },
                     { role: "작곡/편곡가", level: 2 },
                   ]}
+                  isGreet={false}
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -149,6 +151,7 @@ export default function Main() {
                   userCommentary="경험많은 힙합 래퍼 찾아요!"
                   userInfo="OOO앨범에 OOO로 참여한 적 있고, OOOO프로그램에 OO로 방송 출연한 적 있습니다! OOO앨범에 OOO로 참여한 적 있고 OOOO... 더보기"
                   userRoleLevel={[{ role: "래퍼", level: 1 }]}
+                  isGreet={false}
                 />
                 <div style={{ height: "14px" }}></div>
                 <MemberCardContainer
@@ -162,6 +165,7 @@ export default function Main() {
                     { role: "래퍼", level: 1 },
                     { role: "작곡/편곡가", level: 2 },
                   ]}
+                  isGreet={false}
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -173,6 +177,7 @@ export default function Main() {
                   userCommentary="경험많은 힙합 래퍼 찾아요!"
                   userInfo="OOO앨범에 OOO로 참여한 적 있고, OOOO프로그램에 OO로 방송 출연한 적 있습니다! OOO앨범에 OOO로 참여한 적 있고 OOOO... 더보기"
                   userRoleLevel={[{ role: "래퍼", level: 1 }]}
+                  isGreet={false}
                 />
                 <div style={{ height: "14px" }}></div>
                 <MemberCardContainer
@@ -186,6 +191,7 @@ export default function Main() {
                     { role: "래퍼", level: 1 },
                     { role: "작곡/편곡가", level: 2 },
                   ]}
+                  isGreet={false}
                 />
               </SwiperSlide>
             </Swiper>

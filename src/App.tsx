@@ -24,6 +24,12 @@ import ProfileComment from "./pages/ProfileComment";
 import EditTheme from "./pages/edit/EditTheme";
 import EditProfile from "./pages/edit/EditProfile";
 import EditIntroduction from "./pages/edit/EditIntroduction";
+import EditCareer from "./pages/edit/EditCareer";
+import EditGenre from "./pages/edit/EditGenre";
+import EditPortfolio from "./pages/edit/EditPortfolio";
+import EditMyGreetList from "./pages/edit/EditMyGreetList";
+import EditContact from "./pages/edit/EditContact";
+import Announcement from "./pages/Announcement ";
 
 function App() {
   return (
@@ -43,6 +49,7 @@ function App() {
         <Route path="/post-board" element={<PostBoard />}></Route>
         <Route path="/post-detail/:postId" element={<PostDetail />}></Route>
         <Route path="/create-post" element={<PostCreator />}></Route>
+        <Route path="/announcement" element={<Announcement />}></Route>
         <Route path="/my-page" element={<MyPage />}></Route>
         <Route path="/my-page/edit/theme" element={<EditTheme />} />
         <Route path="/my-page/edit/profile" element={<EditProfile />} />
@@ -50,6 +57,11 @@ function App() {
           path="/my-page/edit/introduction"
           element={<EditIntroduction />}
         />
+        <Route path="/my-page/edit/career" element={<EditCareer />} />
+        <Route path="/my-page/edit/genre" element={<EditGenre />} />
+        <Route path="/my-page/edit/portfolio" element={<EditPortfolio />} />
+        <Route path="/my-page/edit/myGreetList" element={<EditMyGreetList />} />
+        <Route path="/my-page/edit/contact" element={<EditContact />} />
         <Route path="/profile/:memberId" element={<Profile />}></Route>
         <Route
           path="/profile/:memberId/comment"

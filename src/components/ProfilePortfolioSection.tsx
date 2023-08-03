@@ -1,4 +1,5 @@
 // Module import
+import { useNavigate } from "react-router-dom";
 import { FC } from "react";
 
 // Style import
@@ -15,6 +16,7 @@ interface ProfilePortfolioSectionProps {
 const ProfilePortfolioSection: FC<ProfilePortfolioSectionProps> = ({
   isMyPage,
 }: ProfilePortfolioSectionProps) => {
+  const navigate = useNavigate();
   return (
     <section
       style={{
@@ -32,6 +34,7 @@ const ProfilePortfolioSection: FC<ProfilePortfolioSectionProps> = ({
         }}
       >
         <h3
+          onClick={isMyPage ? () => navigate("edit/portfolio") : undefined}
           style={{
             ...fontStyles.heading3Semibold,
             height: "22px",
@@ -43,6 +46,7 @@ const ProfilePortfolioSection: FC<ProfilePortfolioSectionProps> = ({
         </h3>
         {isMyPage && (
           <img
+            onClick={isMyPage ? () => navigate("edit/portfolio") : undefined}
             style={{ cursor: "pointer" }}
             src={rightArrowIcon}
             alt="포트폴리오 수정하기"
@@ -50,6 +54,7 @@ const ProfilePortfolioSection: FC<ProfilePortfolioSectionProps> = ({
         )}
       </div>
       <div
+        onClick={isMyPage ? () => navigate("edit/portfolio") : undefined}
         style={{
           boxSizing: "border-box",
           height: "44px",

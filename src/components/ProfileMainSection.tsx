@@ -25,7 +25,11 @@ const ProfileMainSection: FC<ProfileMainSectionProps> = ({
 
   return (
     <section
-      style={{ maxWidth: "500px", margin: "0 auto 20px auto", height: "275px" }}
+      style={{
+        maxWidth: "500px",
+        margin: "0 auto 20px auto",
+        height: "275px",
+      }}
     >
       <div
         style={{
@@ -129,7 +133,7 @@ const ProfileMainSection: FC<ProfileMainSectionProps> = ({
         </div>
         {/* 이름 & 팀 */}
         <div
-          onClick={() => navigate("edit/profile")}
+          onClick={isMyPage ? () => navigate("edit/profile") : undefined}
           style={{
             cursor: isMyPage ? "pointer" : "",
             display: "flex",
@@ -172,7 +176,6 @@ const ProfileMainSection: FC<ProfileMainSectionProps> = ({
             )}
           </div>
           <div
-            // onClick={()=> "프로필 수정"}
             style={{
               ...fontStyles.body3Medium,
               display: "flex",

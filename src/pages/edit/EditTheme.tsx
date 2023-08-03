@@ -94,7 +94,11 @@ export default function EditTheme() {
           helpMessage="한글, 영어, 숫자만 가능해요. (특수문자 X)"
           helpMessageColor={`${colors.textMuted}`}
         />
-        <Button children="확인" onClick={() => alert("수정완료")} disabled={false} />
+        <Button
+          children="확인"
+          onClick={() => alert("수정완료")}
+          disabled={false}
+        />
       </div>
     </>
   );
@@ -115,7 +119,7 @@ const ThemeSelector: FC<ThemeSelectorProps> = ({
 }: ThemeSelectorProps) => {
   return (
     <>
-      <label style={{ position: "relative" }}>
+      <label style={{ position: "relative", cursor: "pointer" }}>
         <input
           style={{ position: "absolute", display: "none" }}
           type="radio"

@@ -1,4 +1,6 @@
 // Module import
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Style import
 import { colors } from "../styles/colors";
@@ -15,8 +17,11 @@ import ProfileCareerSection from "../components/ProfileCareerSection";
 import ProfileGenreSection from "../components/ProfileGenreSection";
 import ProfilePortfolioSection from "../components/ProfilePortfolioSection";
 import ProfileCommentSection from "../components/ProfileCommentSection";
+import InquireOrReportModal from "../components/InquireOrReportModal";
 
 export default function MyPage() {
+  const navigate = useNavigate();
+  const [showInquireModal, setShowInquireModal] = useState<boolean>(false);
   return (
     <div
       style={{
@@ -27,6 +32,7 @@ export default function MyPage() {
       }}
     >
       <ProfilePageHeader isMyPage={true} />
+      <div style={{ height: "44px" }}></div>
       <ProfileMainSection isMyPage={true} />
       <ProfileIntroductionSection isMyPage={true} />
       <ProfileCareerSection
@@ -56,20 +62,28 @@ export default function MyPage() {
         <MyPageMenu>
           <div style={{ display: "flex", gap: "7px", alignItems: "center" }}>
             <img src={greetingIconSmall} alt="그릿 아이콘"></img>
-            <MenuName>나의 Greet 리스트</MenuName>
+            <MenuName onClick={() => navigate("edit/myGreetList")}>
+              나의 Greet 리스트
+            </MenuName>
           </div>
           <MenuDetail>20명</MenuDetail>
         </MyPageMenu>
         <MyPageMenu>
-          <MenuName>나의 연락수단</MenuName>
+          <MenuName onClick={() => navigate("edit/contact")}>
+            나의 연락수단
+          </MenuName>
           <MenuDetail>인스타그램 ID/전화번호</MenuDetail>
         </MyPageMenu>
         <SectionSeparator />
         <MyPageMenu>
-          <MenuName>공지사항</MenuName>
+          <MenuName onClick={() => navigate("/announcement")}>
+            공지사항
+          </MenuName>
         </MyPageMenu>
         <MyPageMenu>
-          <MenuName>문의하기</MenuName>
+          <MenuName onClick={() => setShowInquireModal(true)}>
+            문의하기
+          </MenuName>
         </MyPageMenu>
         <SectionSeparator />
         <MyPageMenu>
@@ -79,7 +93,7 @@ export default function MyPage() {
           <MenuName>약관 및 정책</MenuName>
         </MyPageMenu>
         <MyPageMenu>
-          <MenuName>버전 정보</MenuName>
+          <MenuName style={{ cursor: "default" }}>버전 정보</MenuName>
           <MenuDetail>1.0.0</MenuDetail>
         </MyPageMenu>
         <SectionSeparator />
@@ -90,6 +104,12 @@ export default function MyPage() {
           <MenuName>탈퇴하기</MenuName>
         </MyPageMenu>
       </section>
+      {showInquireModal && (
+        <InquireOrReportModal
+          isInquire={true}
+          closeOnclick={() => setShowInquireModal(false)}
+        />
+      )}
     </div>
   );
 }

@@ -15,36 +15,38 @@ import cameraIcon from "../../images/cameraIcon.png";
 import BackTextNavigationBar from "../../components/BackTextNavigationBar";
 import InputField from "../../components/InputField";
 import Button from "../../components/Button";
+import Roles from "../../components/Roles";
+import SettingLevel from "../../components/SettingLevel";
 
 export default function EditIntroduction() {
-  const [image, setImage] = useState(defaultProfileImage);
-  const [files, setFiles] = useState("");
+  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
+  const [otherRole, setOtherRole] = useState<string>("");
+  // 그 외 직군 이라는 것이 포함되어 있으면 selectedRoles에서 그 외 직군을 빼고, otherRole을 추가
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setFiles(reader.result as string);
-        setImage(reader.result as string);
-      };
-    }
+  const handleSelectRoles = (selectedRoles: string[]) => {
+    setSelectedRoles(selectedRoles);
   };
 
-  const [nickname, setNickname] = useState<string>("윤석민");
-  const [isDuplicateNickname, setIsDuplicateNickname] =
-    useState<boolean>(false);
-
-  const handleNicknameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNickname(event.target.value);
+  const handleOtherRole = (otherRole: string) => {
+    setOtherRole(otherRole);
   };
 
-  const [teamName, setTeamName] = useState<string>("");
+  const [roleLevel, setRoleLevel] = useState<{ role: string; level: number }[]>(
+    []  
+  );
 
-  const handleTeamNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTeamName(event.target.value);
+  const handleSettingLevel = (
+    roleLevel: { role: string; level: number }[],
+    index: number,
+    selectedLevel: number
+  ) => {
+    const updatedArray = [...roleLevel];
+    updatedArray[index] = { ...updatedArray[index], level: selectedLevel };
+    setRoleLevel(updatedArray);
   };
+
+  const isPage4ButtonDisabled = roleLevel.every((item) => item.level !== 0);
+  const [selectedRolesForApi, setSelectedRolesForApi] = useState<string[]>([]);
 
   return (
     <>
@@ -54,76 +56,40 @@ export default function EditIntroduction() {
           style={{
             ...fontStyles.heading2Medium,
             color: `${colors.textActive}`,
-            marginTop: "32px",
+            marginTop: "30px",
+            marginBottom: "20px",
           }}
         >
-          프로필
+          분야
         </h2>
-        {/* 프로필 사진 변경 */}
-        <div style={{ position: "relative", marginBottom: "63px" }}>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <img
-              src={image}
-              alt=""
-              width="124px"
-              height="124px"
-              style={{ objectFit: "cover", borderRadius: "62px" }}
-            ></img>
+        <Roles onSelectRoles={handleSelectRoles} otherRole={handleOtherRole} />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginBottom: "34px",
+          }}
+        >
+          <div style={{ flexBasis: "539px" }}>
+            {selectedRolesForApi.map((role, index) => (
+              <div style={{ marginBottom: "30px" }}>
+                <SettingLevel
+                  key={index}
+                  labelNum={index + 1}
+                  label={role}
+                  roleLevel={roleLevel}
+                  handleSettingLevel={handleSettingLevel}
+                />
+              </div>
+            ))}
           </div>
-          <CameraStyle>
-            <label htmlFor="ex_file">
-              <img src={cameraIcon} alt="프로필 사진 변경" width="34px" />
-            </label>
-            <input
-              type="file"
-              id="ex_file"
-              name="profileImage"
-              accept="image/*"
-              onChange={handleImageChange}
-            />
-          </CameraStyle>
+          <Button
+            disabled={!isPage4ButtonDisabled}
+            // onClick={checkPage4}
+          >
+            다음
+          </Button>
         </div>
-
-        {/* 닉네임 입력란 */}
-        <InputField
-          type="nickname"
-          value={nickname}
-          onChange={handleNicknameChange}
-          placeholder="닉네임을 입력해주세요."
-          label="닉네임"
-          marginBottom="32px"
-          isNecessary={true}
-          maxCount={8}
-          maxLength={8}
-          currentCount={nickname.length < 8 ? (nickname.length as number) : 8}
-          helpMessage={
-            isDuplicateNickname
-              ? "이미 사용중인 닉네임입니다."
-              : "한글, 영어, 숫자만 가능해요. (특수문자 X)"
-          }
-          helpMessageColor={
-            isDuplicateNickname ? `${colors.negative}` : `${colors.textMuted}`
-          }
-          border={isDuplicateNickname ? `1px solid ${colors.negative}` : ""}
-        />
-        <InputField
-          type="teamname"
-          value={teamName}
-          onChange={handleTeamNameChange}
-          placeholder="팀 이름을 입력해주세요."
-          label="팀 이름 (선택)"
-          marginBottom="204px"
-          maxCount={10}
-          maxLength={10}
-          currentCount={teamName.length < 10 ? (teamName.length as number) : 10}
-          helpMessage={"한글, 영어, 숫자만 가능해요. (특수문자 X)"}
-          helpMessageColor={colors.textMuted}
-        />
-        <Button
-          children="확인"
-          onClick={() => alert("수정완료")}
-          disabled={false}
-        />
       </div>
     </>
   );

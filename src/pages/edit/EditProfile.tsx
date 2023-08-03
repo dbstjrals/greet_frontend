@@ -40,7 +40,7 @@ export default function EditProfile() {
     setNickname(event.target.value);
   };
 
-  const [teamName, setTeamName] = useState<string>("");
+  const [teamName, setTeamName] = useState<string>("Greet");
 
   const handleTeamNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTeamName(event.target.value);

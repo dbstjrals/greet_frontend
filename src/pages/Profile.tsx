@@ -79,25 +79,18 @@ export default function Profile() {
       }}
     >
       <ProfilePageHeader isMyPage={false} />
-
+      <div style={{ height: "44px" }}></div>
       <ProfileMainSection isMyPage={false} />
-
       <ProfileIntroductionSection isMyPage={false} />
-
       <ProfileCareerSection
         isMyPage={false}
         careerContent="OOO앨범에 OOO로 참여한 적 있고,
         OOO프로그램에 OO로 방송 출연한 적 있습니다!"
       />
-
       <ProfileGenreSection isMyPage={false} />
-
       <ProfilePortfolioSection isMyPage={false} />
-
       <ProfileCommentSection isMyPage={false} />
-
       <div style={{ height: "60px" }}></div>
-
       <ProfileInteractSection>
         <div
           onClick={() => {

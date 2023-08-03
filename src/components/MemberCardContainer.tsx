@@ -1,5 +1,5 @@
 // Module import
-import React, { FC, ReactNode } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
@@ -21,6 +21,7 @@ interface MemberCardContainerProps {
   userCommentary: string;
   userInfo: string;
   userRoleLevel: { role: string; level: number }[];
+  isGreet: boolean;
   teamName?: string;
 }
 
@@ -32,9 +33,12 @@ const MemberCardContainer: FC<MemberCardContainerProps> = ({
   userCommentary,
   userInfo,
   userRoleLevel,
+  isGreet,
   teamName,
 }: MemberCardContainerProps) => {
   const navigate = useNavigate();
+  const [hasGreet, setHasGreet] = useState<Boolean>(isGreet);
+
   return (
     <CardContainer
       onClick={() => {
@@ -91,12 +95,15 @@ const MemberCardContainer: FC<MemberCardContainerProps> = ({
         <div style={{ flex: "17" }}></div>
         <div
           onClick={(e) => {
-            console.log("bb");
             e.stopPropagation();
+            setHasGreet((prev) => !prev);
           }}
           style={{
             flex: "32",
-            backgroundColor: "#2E2E2E",
+            backgroundColor: hasGreet ? "" : "#2E2E2E",
+            backgroundImage: hasGreet
+              ? "linear-gradient(135deg, #FFF626 0%, #FF9B26 51.04%, #FF4D26 100%)"
+              : "",
             width: "32px",
             height: "32px",
             marginTop: "auto",

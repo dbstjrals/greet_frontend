@@ -27,9 +27,14 @@ const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
   return (
     <header
       style={{
+        position: "fixed",
+        zIndex: "1",
+        backgroundColor: `${colors.bgSurface}`,
         display: "flex",
         justifyContent: "space-between",
         padding: isMyPage ? "10px 21px 10px 16px" : "10px 21px 10px 9px",
+        width: "100%",
+        maxWidth: "500px",
         height: "44px",
         boxSizing: "border-box",
       }}

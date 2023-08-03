@@ -179,8 +179,12 @@ const SideNavigator: FC<SideNavigatorProps> = ({
           >
             게시판
           </MenuWrapper>
-          <MenuWrapper>공지사항</MenuWrapper>
-          <MenuWrapper>나의 Greet 리스트</MenuWrapper>
+          <MenuWrapper onClick={() => navigate("/announcement")}>
+            공지사항
+          </MenuWrapper>
+          <MenuWrapper onClick={() => navigate("/my-page/edit/myGreetList")}>
+            나의 Greet 리스트
+          </MenuWrapper>
           <MenuWrapper>문의하기</MenuWrapper>
           <MenuWrapper
             onClick={() => {

@@ -1,5 +1,6 @@
 // Module import
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Style import
 import { colors } from "../styles/colors";
@@ -17,6 +18,7 @@ const ProfileCareerSection: FC<ProfileCareerSectionProps> = ({
   isMyPage,
   careerContent,
 }: ProfileCareerSectionProps) => {
+  const navigate = useNavigate();
   return (
     <section
       style={{
@@ -34,6 +36,7 @@ const ProfileCareerSection: FC<ProfileCareerSectionProps> = ({
         }}
       >
         <h3
+          onClick={isMyPage ? () => navigate("edit/career") : undefined}
           style={{
             ...fontStyles.heading3Semibold,
             height: "22px",
@@ -45,6 +48,7 @@ const ProfileCareerSection: FC<ProfileCareerSectionProps> = ({
         </h3>
         {isMyPage && (
           <img
+            onClick={isMyPage ? () => navigate("edit/career") : undefined}
             style={{ cursor: isMyPage ? "pointer" : "" }}
             src={rightArrowIcon}
             alt="이력사항 수정하기"
@@ -52,6 +56,7 @@ const ProfileCareerSection: FC<ProfileCareerSectionProps> = ({
         )}
       </div>
       <div
+        onClick={isMyPage ? () => navigate("edit/career") : undefined}
         style={{
           ...fontStyles.body2Medium,
           padding: "10px 16px",

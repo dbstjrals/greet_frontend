@@ -9,6 +9,7 @@ import { colors } from "../styles/colors";
 // Image import
 import rightArrowIcon from "../images/rightArrow.svg";
 import MemberCardContainer from "./MemberCardContainer";
+import { useNavigate } from "react-router-dom";
 
 interface ProfileIntroductionSectionProps {
   isMyPage: boolean;
@@ -17,6 +18,7 @@ interface ProfileIntroductionSectionProps {
 const ProfileIntroductionSection: FC<ProfileIntroductionSectionProps> = ({
   isMyPage,
 }: ProfileIntroductionSectionProps) => {
+  const navigate = useNavigate();
   return (
     <section
       style={{
@@ -39,6 +41,7 @@ const ProfileIntroductionSection: FC<ProfileIntroductionSectionProps> = ({
         }}
       >
         <h3
+          onClick={isMyPage ? () => navigate("edit/introduction") : undefined}
           style={{
             ...fontStyles.heading3Semibold,
             height: "22px",
@@ -50,6 +53,7 @@ const ProfileIntroductionSection: FC<ProfileIntroductionSectionProps> = ({
         </h3>
         {isMyPage && (
           <img
+            onClick={isMyPage ? () => navigate("edit/introduction") : undefined}
             style={{ cursor: isMyPage ? "pointer" : "" }}
             src={rightArrowIcon}
             alt="나를 소개해요 수정하기"
@@ -57,6 +61,7 @@ const ProfileIntroductionSection: FC<ProfileIntroductionSectionProps> = ({
         )}
       </div>
       <div
+        onClick={isMyPage ? () => navigate("edit/introduction") : undefined}
         style={{
           display: "flex",
           gap: "10px",
@@ -68,6 +73,7 @@ const ProfileIntroductionSection: FC<ProfileIntroductionSectionProps> = ({
         <RoleLevel>최근에 시작했어요</RoleLevel>
       </div>
       <div
+        onClick={isMyPage ? () => navigate("edit/introduction") : undefined}
         style={{
           display: "flex",
           gap: "10px",

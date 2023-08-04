@@ -451,6 +451,8 @@ export default function PostCreator() {
                   name="profileImage"
                   accept="image/*"
                   onChange={handleImageUpload}
+                  multiple
+                  maxLength={5}
                 />
               </CameraStyle>
               <ImageSwiper

@@ -48,17 +48,8 @@ export default function EditProfile() {
 
   return (
     <>
-      <BackTextNavigationBar innerText="배경화면" />
-      <div style={{ padding: "0 16px" }}>
-        <h2
-          style={{
-            ...fontStyles.heading2Medium,
-            color: `${colors.textActive}`,
-            marginTop: "32px",
-          }}
-        >
-          프로필
-        </h2>
+      <BackTextNavigationBar innerText="프로필" />
+      <div style={{ padding: "0 16px", marginTop: "32px" }}>
         {/* 프로필 사진 변경 */}
         <div style={{ position: "relative", marginBottom: "63px" }}>
           <div style={{ display: "flex", justifyContent: "center" }}>

@@ -55,7 +55,7 @@ const PostContainer: FC<PostContainerProps> = ({
           alignItems: 'center'
         }}>
           <RoundTag style={{
-            backgroundColor: `${colors.bgOnSurface}`, color: `${colors.textMuted}`
+            backgroundColor: `${colors.grey00}`, color: `${colors.textMuted}`
           }}>{postTag}</RoundTag>
           <span style={{
             fontSize: '10px', fontWeight: '400', color: `${colors.textMuted}`

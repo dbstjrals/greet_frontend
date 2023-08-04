@@ -16,6 +16,7 @@ import defaultProfileImage from "../images/defaultProfileImage.png";
 // Component import
 import PageContainer from "./PageContainer";
 import GradientProfileImage from "./GradientProfileImage";
+import InquireOrReportModal from "./InquireOrReportModal";
 
 interface SideNavigatorProps {
   closeOnclick: React.Dispatch<React.SetStateAction<boolean>>;
@@ -28,175 +29,201 @@ const SideNavigator: FC<SideNavigatorProps> = ({
   const [hasAlert, setHasAlert] = useState<boolean>(true);
   const location = useLocation();
   const pathname = location.pathname;
+  const [showInquireModal, setShowInquireModal] = useState<boolean>(false);
 
   return (
-    <div
-      onClick={() => {
-        closeOnclick(false);
-      }}
-      style={{
-        zIndex: "2",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.6)",
-      }}
-    >
-      <PageContainer style={{ position: "relative" }}>
+    <>
+      {!showInquireModal && (
         <div
-          onClick={(e) => {
-            e.stopPropagation(); // 클릭 이벤트 버블링(stopPropagation)을 막습니다.
+          onClick={() => {
+            closeOnclick(false);
           }}
           style={{
-            width: "79.49%",
-            height: "100%",
-            backgroundColor: "#101010",
-            boxSizing: "border-box",
-            position: "absolute",
-            right: "0",
-            zIndex: "3",
-            padding: "30px 24px 0 24px",
+            zIndex: "2",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.6)",
           }}
         >
-          {/* 알림 상단 */}
-          <div
-            onClick={() => navigate("/notification")}
+          <PageContainer
             style={{
-              display: "flex",
-              backgroundColor: `${colors.grey00}`,
-              height: "32px",
-              cursor: "pointer",
-              boxSizing: "border-box",
-              padding: "5px 5px 5px 10px",
-              alignItems: "center",
-              borderRadius: "8px",
-              justifyContent: "space-between",
-              marginBottom: "28px",
+              position: "relative",
             }}
-          >
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <img src={hasAlert ? hasAlertIcon : alertIcon} alt="알림"></img>
-              <span
-                style={{
-                  ...fontStyles.body1Medium,
-                  color: `${colors.textActive}`,
-                  marginLeft: "10px",
-                }}
-              >
-                {hasAlert ? "알림이 있어요 !" : "알림"}
-              </span>
-            </div>
-            <div>
-              <img src={rightIcon} alt=">"></img>
-            </div>
-          </div>
-          {/* 프로필 */}
-          <div
-            style={{
-              height: "80px",
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "20px",
-            }}
-          >
-            <div
-              // onClick = {()=>navigate('프로필 수정')}
-              style={{ cursor: "pointer" }}
             >
-              <GradientProfileImage
-                gradientColor="135deg, #FFF626 0%, #FF9B26 51.04%, #FF4D26 100%"
-                userImage={defaultProfileImage}
-                size={80}
-              ></GradientProfileImage>
-            </div>
             <div
+              onClick={(e) => {
+                e.stopPropagation(); // 클릭 이벤트 버블링(stopPropagation)을 막습니다.
+              }}
               style={{
-                marginLeft: "30px",
-                height: "39px",
-                display: "flex",
-                flexDirection: "column",
+                width: "79.49%",
+                height: "100%",
+                backgroundColor: "#101010",
+                boxSizing: "border-box",
+                position: "absolute",
+                right: "0",
+                zIndex: "3",
+                padding: "30px 24px 0 24px",
               }}
             >
+              {/* 알림 상단 */}
               <div
-                // onClick = {()=>navigate('프로필 수정')}
+                onClick={() => navigate("/notification")}
                 style={{
-                  ...fontStyles.heading2Medium,
-                  cursor: "pointer",
-                  color: `${colors.textActive}`,
                   display: "flex",
-                  marginBottom: "6px",
-                }}
-              >
-                <span style={{ marginRight: "5px" }}>박세원님</span>
-                <img src={rightIcon} alt=">"></img>
-              </div>
-              <div
-                // onClick = {()=>navigate('프로필 수정')}
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "500",
-                  color: `${colors.textDefault}`,
+                  backgroundColor: `${colors.grey00}`,
+                  height: "32px",
                   cursor: "pointer",
+                  boxSizing: "border-box",
+                  padding: "5px 5px 5px 10px",
+                  alignItems: "center",
+                  borderRadius: "8px",
+                  justifyContent: "space-between",
+                  marginBottom: "28px",
                 }}
               >
-                <b
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <img
+                    src={hasAlert ? hasAlertIcon : alertIcon}
+                    alt="알림"
+                  ></img>
+                  <span
+                    style={{
+                      ...fontStyles.body1Medium,
+                      color: `${colors.textActive}`,
+                      marginLeft: "10px",
+                    }}
+                  >
+                    {hasAlert ? "알림이 있어요 !" : "알림"}
+                  </span>
+                </div>
+                <div>
+                  <img src={rightIcon} alt=">"></img>
+                </div>
+              </div>
+              {/* 프로필 */}
+              <div
+                style={{
+                  height: "80px",
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "20px",
+                }}
+              >
+                <div
+                  // onClick = {()=>navigate('프로필 수정')}
+                  style={{ cursor: "pointer" }}
+                >
+                  <GradientProfileImage
+                    gradientColor="135deg, #FFF626 0%, #FF9B26 51.04%, #FF4D26 100%"
+                    userImage={defaultProfileImage}
+                    size={80}
+                  ></GradientProfileImage>
+                </div>
+                <div
                   style={{
-                    marginRight: "2px",
-                    color: `${colors.primary100}`,
-                    fontWeight: "500",
+                    marginLeft: "30px",
+                    height: "39px",
+                    display: "flex",
+                    flexDirection: "column",
                   }}
                 >
-                  Greet
-                </b>
-                팀 소속
+                  <div
+                    // onClick = {()=>navigate('프로필 수정')}
+                    style={{
+                      ...fontStyles.heading2Medium,
+                      cursor: "pointer",
+                      color: `${colors.textActive}`,
+                      display: "flex",
+                      marginBottom: "6px",
+                    }}
+                  >
+                    <span style={{ marginRight: "5px" }}>박세원님</span>
+                    <img src={rightIcon} alt=">"></img>
+                  </div>
+                  <div
+                    // onClick = {()=>navigate('프로필 수정')}
+                    style={{
+                      fontSize: "12px",
+                      fontWeight: "500",
+                      color: `${colors.textDefault}`,
+                      cursor: "pointer",
+                    }}
+                  >
+                    <b
+                      style={{
+                        marginRight: "2px",
+                        color: `${colors.primary100}`,
+                        fontWeight: "500",
+                      }}
+                    >
+                      Greet
+                    </b>
+                    팀 소속
+                  </div>
+                </div>
               </div>
+              {/* 메뉴 리스트 */}
+              <MenuWrapper
+                onClick={() => {
+                  if (pathname === "/main") closeOnclick(true);
+                  else navigate("/main");
+                }}
+              >
+                메인 홈
+              </MenuWrapper>
+              <MenuWrapper
+                onClick={() => {
+                  if (pathname === "/member-list") closeOnclick(true);
+                  else navigate("/member-list");
+                }}
+              >
+                멤버리스트
+              </MenuWrapper>
+              <MenuWrapper
+                onClick={() => {
+                  if (pathname === "/post-board") closeOnclick(true);
+                  else navigate("/post-board");
+                }}
+              >
+                게시판
+              </MenuWrapper>
+              <MenuWrapper onClick={() => navigate("/announcement")}>
+                공지사항
+              </MenuWrapper>
+              <MenuWrapper
+                onClick={() => navigate("/my-page/edit/myGreetList")}
+              >
+                나의 Greet 리스트
+              </MenuWrapper>
+              <MenuWrapper
+                onClick={() => {
+                  setShowInquireModal(true);
+                }}
+              >
+                문의하기
+              </MenuWrapper>
+              <MenuWrapper
+                onClick={() => {
+                  if (pathname === "/my-page") closeOnclick(true);
+                  else navigate("/my-page");
+                }}
+              >
+                마이페이지
+              </MenuWrapper>
             </div>
-          </div>
-          {/* 메뉴 리스트 */}
-          <MenuWrapper
-            onClick={() => {
-              if (pathname === "/main") closeOnclick(true);
-              else navigate("/main");
-            }}
-          >
-            메인 홈
-          </MenuWrapper>
-          <MenuWrapper
-            onClick={() => {
-              if (pathname === "/member-list") closeOnclick(true);
-              else navigate("/member-list");
-            }}
-          >
-            멤버리스트
-          </MenuWrapper>
-          <MenuWrapper
-            onClick={() => {
-              if (pathname === "/post-board") closeOnclick(true);
-              else navigate("/post-board");
-            }}
-          >
-            게시판
-          </MenuWrapper>
-          <MenuWrapper onClick={() => navigate("/announcement")}>
-            공지사항
-          </MenuWrapper>
-          <MenuWrapper onClick={() => navigate("/my-page/edit/myGreetList")}>
-            나의 Greet 리스트
-          </MenuWrapper>
-          <MenuWrapper>문의하기</MenuWrapper>
-          <MenuWrapper
-            onClick={() => {
-              if (pathname === "/my-page") closeOnclick(true);
-              else navigate("/my-page");
-            }}
-          >
-            마이페이지
-          </MenuWrapper>
+          </PageContainer>
         </div>
-      </PageContainer>
-    </div>
+      )}
+      {showInquireModal && (
+        <InquireOrReportModal
+          closeOnclick={() => setShowInquireModal(false)}
+          isInquire={true}
+        />
+      )}
+    </>
   );
 };
 

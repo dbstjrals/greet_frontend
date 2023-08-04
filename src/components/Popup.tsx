@@ -1,6 +1,6 @@
-import React, { FC, ReactNode } from 'react';
-import styled from 'styled-components';
-import { colors } from '../styles/colors';
+import React, { FC, ReactNode } from "react";
+import styled from "styled-components";
+import { colors } from "../styles/colors";
 
 interface PopupProps {
   showPopup: boolean;
@@ -22,58 +22,108 @@ const Popup: FC<PopupProps> = ({
   popupContent,
 }: PopupProps) => {
   return (
-    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
-      <div style={{
-        position: 'absolute', borderRadius: '6px', margin: '0',
-        maxWidth: '450px', width: 'calc(100% - 50px)', left: '50%', height: '135px', top: '50%',
-        transform: 'translate(-50%, -50%)', backgroundColor: `${colors.bgInput}`,
-      }}>
-        <div style={{
-          height: '88px', border: '6px', display: 'flex', justifyContent: 'center',
-          alignItems: 'center', flexDirection: 'column'
-        }}>
-          <span style={{
-            color: `${colors.textActive}`, height: '27px', fontSize: '16px', fontWeight: '700',
-            lineHeight: '150%', marginBottom: '4px'
-          }}>
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          borderRadius: "6px",
+          margin: "0",
+          maxWidth: "450px",
+          width: "calc(100% - 50px)",
+          left: "50%",
+          height: "135px",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+          backgroundColor: `${colors.bgInput}`,
+        }}
+      >
+        <div
+          style={{
+            height: "88px",
+            border: "6px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <span
+            style={{
+              color: `${colors.textActive}`,
+              height: "27px",
+              fontSize: "16px",
+              fontWeight: "700",
+              lineHeight: "150%",
+              marginBottom: "4px",
+            }}
+          >
             {popupTitle}
           </span>
-          <span style={{
-            color: 'rgba(255,255,255,0.70)', fontSize: '14px', fontWeight: '400', lineHeight: '150%'
-          }}>
+          <span
+            style={{
+              color: "rgba(255,255,255,0.70)",
+              fontSize: "14px",
+              fontWeight: "400",
+              lineHeight: "150%",
+            }}
+          >
             {popupContent}
           </span>
         </div>
         <div
-
           style={{
-            height: '47px', borderTop: `1px solid ${colors.bgInputBorder}`,
-            fontSize: '14px', fontWeight: '500', color: `${colors.textDefault}`, display: 'flex',
-            justifyContent: 'center', alignItems: 'center'
+            height: "47px",
+            boxSizing: "border-box",
+            borderTop: `1px solid ${colors.bgInputBorder}`,
+            fontSize: "14px",
+            fontWeight: "500",
+            color: `${colors.textDefault}`,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <div
             onClick={onClose}
             style={{
-              flex: '1', borderRight: `1px solid ${colors.bgInputBorder}`, height: '47px',
-              display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer'
-            }}>
+              flex: "1",
+              borderRight: `1px solid ${colors.bgInputBorder}`,
+              height: "46px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+          >
             취소
           </div>
           <div
             onClick={onAdmit}
             style={{
-              flex: '1', borderRight: `1px solid ${colors.bgInputBorder}`, height: '47px',
-              display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer'
-            }}>
+              flex: "1",
+              height: "46px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+          >
             확인
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
-
 
 const PopupContainer = styled.div`
   justify-content: center;

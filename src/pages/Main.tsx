@@ -336,7 +336,7 @@ const Title = styled.div`
   flex: 7;
   font-size: 16px;
   color: ${colors.textActive};
-  font-weight: 700px;
+  font-weight: 700;
 `;
 const FullView = styled.div`
   font-size: 12px;

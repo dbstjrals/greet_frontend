@@ -259,7 +259,7 @@ const CategoryContainer = styled.div`
   display: flex;
   height: 36px;
   padding: 4px 0 0 16px;
-  border-bottom: 1px solid rgba(61, 61, 61, 1);
+  border-bottom: 1px solid ${colors.grey00};
   gap: 20px;
   box-sizing: border-box;
 `;

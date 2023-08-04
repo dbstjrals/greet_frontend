@@ -713,7 +713,7 @@ export default function Onboarding() {
               marginBottom="143px"
             ></InputField>
             <Button onClick={checkPage7} disabled={isPage8ButtonDisabled}>
-              다음
+              완료
             </Button>
           </>
         )}

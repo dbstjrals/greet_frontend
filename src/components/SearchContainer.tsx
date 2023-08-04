@@ -341,7 +341,7 @@ const RecommendKewordTag = styled.div`
   padding: 6px 16px;
   box-sizing: border-box;
   border-radius: 100px;
-  border: 1px solid #7C7C7C;
+  border: 1px solid ${colors.grey10};
   gap: 8px;
   align-items: center;
   justify-content: center;

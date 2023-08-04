@@ -84,7 +84,7 @@ const GenreBox = styled.div`
   color: ${colors.textLighten};
   font-size: 14px;
   font-weight: 500;
-  border: 1px solid ${colors.grey20};
+  border: 1px solid ${colors.grey10};
   background-color: ${colors.bgSurface};
   border-radius: 100px;
   box-sizing: border-box;

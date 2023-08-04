@@ -116,7 +116,7 @@ export default function MyPage() {
 
 const SectionSeparator = styled.hr`
   border: none;
-  border-top: 0.5px solid ${colors.grey05};
+  border-top: 1px solid ${colors.grey05};
   margin: 0px;
 `;
 

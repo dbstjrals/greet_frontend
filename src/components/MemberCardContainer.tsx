@@ -154,16 +154,20 @@ const MemberCardContainer: FC<MemberCardContainerProps> = ({
                 marginRight: "8px",
               }}
             >
-              <RoundTag
-                style={{
-                  backgroundColor: `${colors.primary100}`,
-                  color: `${colors.textDarken}`,
-                  marginRight: "4px",
-                }}
+              <div
+                style={{ display: "flex", gap: "4px", alignItems: "center" }}
               >
-                {item.role}
-              </RoundTag>
-              {levelInText}
+                <RoundTag
+                  style={{
+                    backgroundColor: `${colors.primary100}`,
+                    color: `${colors.textDarken}`,
+                    
+                  }}
+                >
+                  {item.role}
+                </RoundTag>
+                <div style={{lineHeight: "20px"}}>{levelInText}</div>
+              </div>
             </div>
           );
         })}
@@ -186,10 +190,11 @@ const CardContainer = styled.div`
 const RoundTag = styled.div`
   padding: 1px 8px;
   border-radius: 100px;
-  display: inline-block;
-  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   font-size: 10px;
-  line-height: 16px;
+  line-height: 18px;
   font-weight: 500;
 `;

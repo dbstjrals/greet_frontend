@@ -52,7 +52,7 @@ const SideNavigator: FC<SideNavigatorProps> = ({
             style={{
               position: "relative",
             }}
-            >
+          >
             <div
               onClick={(e) => {
                 e.stopPropagation(); // 클릭 이벤트 버블링(stopPropagation)을 막습니다.

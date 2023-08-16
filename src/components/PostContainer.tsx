@@ -75,8 +75,8 @@ const PostContainer: FC<PostContainerProps> = ({
               lineHeight: '19.2px', overflow: 'hidden'
             }}>개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 개인 레슨합니다 ... 더보기</div>
           </div>
-          <div style={{ display: postThumbnail ? '' : 'none', borderRadius: '5px' }}>
-            <img src={postThumbnail} alt='썸네일' width='64px' height='64px'></img>
+          <div style={{ display: postThumbnail ? '' : 'none' }}>
+            <img style={{borderRadius: "5px"}} src={postThumbnail} alt='썸네일' width='64px' height='64px'></img>
           </div>
         </div>
       </div>

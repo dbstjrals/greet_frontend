@@ -57,29 +57,33 @@ const MemberCardContainer: FC<MemberCardContainerProps> = ({
         <GradientProfileImage userImage={userImage} gradientColor={userColor} />
         <div style={{ flex: "14" }}></div>
         <div style={{ flex: "231", display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", position: "relative" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "5px",
+              alignItems: "center",
+              marginBottom: "8px",
+            }}
+          >
             <div
               style={{
                 fontSize: "16px",
                 fontWeight: "700",
                 color: `${colors.textActive}`,
                 height: "17px",
-                marginBottom: "8px",
               }}
             >
               {userName}
-              <RoundTag
-                style={{
-                  position: "absolute",
-                  marginLeft: "5px",
-                  display: teamName ? "" : "none",
-                  backgroundColor: `${colors.bgOnSurface}`,
-                  color: `${colors.textDefault}`,
-                }}
-              >
-                {teamName}
-              </RoundTag>
             </div>
+            <RoundTag
+              style={{
+                display: teamName ? "" : "none",
+                backgroundColor: `${colors.bgOnSurface}`,
+                color: `${colors.textDefault}`,
+              }}
+            >
+              {teamName}
+            </RoundTag>
           </div>
           <div
             style={{
@@ -161,12 +165,11 @@ const MemberCardContainer: FC<MemberCardContainerProps> = ({
                   style={{
                     backgroundColor: `${colors.primary100}`,
                     color: `${colors.textDarken}`,
-                    
                   }}
                 >
                   {item.role}
                 </RoundTag>
-                <div style={{lineHeight: "20px"}}>{levelInText}</div>
+                <div style={{ lineHeight: "20px" }}>{levelInText}</div>
               </div>
             </div>
           );

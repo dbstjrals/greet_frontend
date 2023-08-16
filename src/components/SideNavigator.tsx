@@ -1,5 +1,5 @@
 // Module import
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -30,6 +30,16 @@ const SideNavigator: FC<SideNavigatorProps> = ({
   const location = useLocation();
   const pathname = location.pathname;
   const [showInquireModal, setShowInquireModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때
+    document.body.style.overflow = "hidden";
+
+    // 컴포넌트가 언마운트될 때
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
 
   return (
     <>
@@ -66,6 +76,7 @@ const SideNavigator: FC<SideNavigatorProps> = ({
                 right: "0",
                 zIndex: "3",
                 padding: "30px 24px 0 24px",
+                overflow: "scroll",
               }}
             >
               {/* 알림 상단 */}

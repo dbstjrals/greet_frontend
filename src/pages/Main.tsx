@@ -31,7 +31,12 @@ import rightArrow from "../images/rightArrow.svg";
 import profileImage from "../images/defaultProfileImage.png";
 
 export default function Main() {
+  const navigate = useNavigate();
   const [preventPopstate, setPreventPopstate] = useState<boolean>(false);
+  const [showSideNavigator, setShowSideNavigator] = useState<boolean>(false);
+  const [searchOn, setSearchOn] = useState<boolean>(false);
+  const [filterOn, setFilterOn] = useState<boolean>(false);
+
   useEffect(() => {
     if (preventPopstate) {
       window.history.pushState(null, "", ""); // 현재 페이지 history stack 한개 더 쌓기
@@ -43,11 +48,6 @@ export default function Main() {
       };
     }
   }, [preventPopstate]);
-  const navigate = useNavigate();
-  const [showSideNavigator, setShowSideNavigator] = useState<Boolean>(false);
-
-  const [searchOn, setSearchOn] = useState<boolean>(false);
-  const [filterOn, setFilterOn] = useState<boolean>(false);
 
   return (
     <PageContainer style={{ padding: "0", width: "100%" }}>
